@@ -1,0 +1,104 @@
+.personal-header {
+    position: fixed;
+    top: 0;
+    min-height: 46px;
+    width: 100%;
+    background-color: #232323;
+}
+
+.brand-header {
+    height: 115px;
+}
+
+.font-test {
+    font-family: BentonSansBook, sans-serif;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.primary-nav {
+    font-family: BentonSansBook, sans-serif;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: #000;
+    text-align: center;
+}
+
+.nav-icon-hover {
+    position: relative; 
+    padding-top: 20px; 
+    padding-bottom: 22px;
+    cursor: pointer;
+}
+
+.nav-icon-hover:hover {
+    height: 100%;
+    background-color: #000;
+}
+
+.nav-icon-border {
+    border-right: 1px solid #000;
+    position: relative;
+    display: inline;
+}
+
+.nav-icon {
+    margin-top: 10px; 
+    font-size: 16px; 
+    padding: 11px 5px;
+}
+
+.nav-seperator {
+    padding: 0;
+    padding-top: 5px;
+}
+
+.primary-nav li a {
+    text-decoration: none;
+    padding-bottom: 19px;
+    cursor: pointer;
+    color: #000;
+}
+
+.primary-nav li a:hover {
+    color: #E80C7A;
+    border-bottom: 1px solid #E80C7A;
+}
+
+.page-container {
+    height: 1500px;
+}
+
+.fixed-nav {
+    position: fixed;
+    border-bottom: 1px solid #e1e1e1;
+    top: 61px;
+    width: 100%;
+    height: 51px;
+}
+
+.fixed-nav-padding {
+    padding-top: 15px;
+}
+
+p {
+    font-size: 12px;
+    font-family: BentonSansBook, sans-serif;
+}
+
+.delivery-info {
+    text-transform: uppercase;
+    text-align: center;
+    color: #E80C7A;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.delivery-info-code {
+    font-size: 11px;
+    line-height: 17px;
+    color: #fff;
+    text-align: center;
+}
