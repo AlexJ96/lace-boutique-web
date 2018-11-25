@@ -1,4 +1,4 @@
-import { OnInit, Component, HostListener, ViewChild, ElementRef } from "../../../../node_modules/@angular/core";
+import { OnInit, Component } from "@angular/core";
 
 @Component({
     templateUrl: './home.component.html',
@@ -6,22 +6,6 @@ import { OnInit, Component, HostListener, ViewChild, ElementRef } from "../../..
 })
 export class HomeComponent implements OnInit {
 
-    @ViewChild('mainNav') mainNav: ElementRef;
-    @ViewChild('personalHeader') personalHeader: ElementRef;
-    fixedNav = false;
-
     constructor() { }
     ngOnInit() { }
-
-    @HostListener("window:scroll", [])
-    onWindowScroll() {
-        let pageY = window.pageYOffset;
-        let navY = this.personalHeader.nativeElement.offsetHeight;
-
-        if (pageY >= navY)
-            this.fixedNav = true;
-        else
-            this.fixedNav = false;
-
-    }
 }

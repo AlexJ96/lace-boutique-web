@@ -1,0 +1,71 @@
+/* Testing Only */
+.page-container {
+    height: 1500px;
+}
+
+p {
+    font-size: 12px;
+    font-family: BentonSansBook, sans-serif;
+}
+
+.primary-nav li a {
+    text-decoration: none;
+    font-size: 1vw;
+    font-weight: 800;
+    letter-spacing: .2rem;
+    font-family: BentonSansBook, sans-serif;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: #000;
+}
+
+.primary-nav li a:hover {
+    color: #ceac41;
+    /*border-bottom: 1px solid #ceac41;*/
+}
+
+.center-block {
+    text-align: center;
+}
+
+.fixed-nav {
+    position: fixed;
+    border-bottom: 1px solid #e1e1e1;
+    top: 50px;
+    width: 100%;
+    margin-top: -5px;
+}
+
+.fixed-nav-padding {
+    padding-top: 10px;
+}
+
+/**
+    Delivery Note
+**/
+.delivery-note {
+    min-height: 50px;
+    border-bottom: 1px solid #000;
+    text-transform: uppercase;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    margin-top: -5px;
+    background-color: #232c31;
+    color: white;
+    z-index: 100;
+}
+
+.delivery-note-title {
+    margin-top: 10px;
+    font-family: BentonSansBook, sans-serif;
+}
+
+/**
+    Logo Text
+**/
+.logo-text {
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 50px;
+}

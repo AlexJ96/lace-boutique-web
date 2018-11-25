@@ -6,6 +6,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
+import { NavBarComponent } from './components/reusable/nav-bar/nav-bar.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent }
@@ -19,7 +20,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
