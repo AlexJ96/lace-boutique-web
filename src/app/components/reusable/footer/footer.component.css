@@ -1,0 +1,21 @@
+.footer-container {
+    height: 400px;
+    width: 100%;
+    background-color: #ebebeb;
+    margin: 20px 0;
+}
+
+.contact-details {
+    font-size: 13px;
+    letter-spacing: 1px;
+    line-height: 1.8;
+    color: #4D4C4D;
+}
+
+.contact-details p {
+    margin: 0;
+}
+
+.contact-details p a {
+    color: #4D4C4D;
+}

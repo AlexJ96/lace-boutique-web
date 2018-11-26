@@ -1,71 +1,69 @@
-/* Testing Only */
-.page-container {
-    height: 1500px;
+.nav-header, .site-nav {
+    border-bottom: 1px solid #dedede;
 }
 
-p {
+.main-nav {
+    padding: 15px 0;
+}
+
+.nav, .nav li span, .site-nav-ul li a {
+    font-family: 'FuturaPTBook', sans-serif;
     font-size: 12px;
-    font-family: BentonSansBook, sans-serif;
-}
-
-.primary-nav li a {
-    text-decoration: none;
-    font-size: 1vw;
-    font-weight: 800;
-    letter-spacing: .2rem;
-    font-family: BentonSansBook, sans-serif;
+    letter-spacing: 1px;
     text-transform: uppercase;
+    color: #a7a5a6;
     cursor: pointer;
+}
+
+.site-nav-ul {
+    padding-left: 15px;
+}
+
+.site-nav-ul li {
+    padding: 16px 15px;
+    padding-bottom: 16.8px;
+    cursor: pointer;
+}
+
+.site-nav-ul li a {
     color: #000;
+    font-size: 14px;
 }
 
-.primary-nav li a:hover {
-    color: #ceac41;
-    /*border-bottom: 1px solid #ceac41;*/
+.site-nav-ul li:hover {
+    background-color: #f8f8f8;
+    text-decoration: none;
 }
 
-.center-block {
-    text-align: center;
+.site-nav-ul li:hover>a, .site-nav-ul li a:hover {
+    padding-bottom: 15px;
+    border-bottom: 2px solid #000;
 }
 
-.fixed-nav {
-    position: fixed;
-    border-bottom: 1px solid #e1e1e1;
-    top: 50px;
-    width: 100%;
-    margin-top: -5px;
+#left-nav li span {
+    font-size: 10px;
+    margin-left: 1em;
+    opacity: 0;
 }
 
-.fixed-nav-padding {
-    padding-top: 10px;
+.nav li:hover, .nav li:hover>span {
+    color: #333;
 }
 
-/**
-    Delivery Note
-**/
-.delivery-note {
-    min-height: 50px;
-    border-bottom: 1px solid #000;
-    text-transform: uppercase;
-    text-align: center;
-    position: fixed;
-    width: 100%;
-    margin-top: -5px;
-    background-color: #232c31;
-    color: white;
-    z-index: 100;
+#left-nav li:hover>span {
+    opacity: 1;
 }
 
-.delivery-note-title {
-    margin-top: 10px;
-    font-family: BentonSansBook, sans-serif;
+#right-nav {
+    float: right;
 }
 
-/**
-    Logo Text
-**/
-.logo-text {
-    text-align: center;
-    padding: 20px 0;
-    margin-top: 50px;
+.search-box {
+    display: inline-block;
+    border: 1px solid #a7a5a6;
+    line-height: 2;
+    padding-right: 3px;
+    margin-right: -4px;
+    padding-left: 10px;
+    color: #dedede;
 }
