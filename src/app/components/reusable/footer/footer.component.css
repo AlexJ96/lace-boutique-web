@@ -1,21 +1,35 @@
 .footer-container {
-    height: 400px;
+    min-height: 220px;
     width: 100%;
-    background-color: #ebebeb;
+    /* background-color: #ebebeb; */
+    background-color: rgba(255,207,207, 0.6);
     margin: 20px 0;
 }
 
-.contact-details {
+.footer-nav {
+    padding-top: 25px;
+}
+
+.contact-details, .help-details, .account-details, .discover-details, .about-details, .copyright-details {
     font-size: 13px;
     letter-spacing: 1px;
     line-height: 1.8;
     color: #4D4C4D;
 }
 
-.contact-details p {
+.contact-details p, .help-details p, .account-details p, .discover-details p, .about-details p, .copyright-details p {
     margin: 0;
 }
 
-.contact-details p a {
+.contact-details p a, .help-details p a, .account-details p a, .discover-details p a, .about-details p a, .copyright-details p a {
     color: #4D4C4D;
+}
+
+.help-details p, .account-details p, .discover-details p, .about-details p {
+    cursor: pointer;
+}
+
+.copyright-details a {
+    color: #231f20;
+    font-weight: 500;
 }

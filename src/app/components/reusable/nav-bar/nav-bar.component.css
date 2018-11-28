@@ -16,7 +16,7 @@
 }
 
 .site-nav-ul {
-    padding-left: 15px;
+    padding-left: 0;
 }
 
 .site-nav-ul li {
@@ -31,7 +31,9 @@
 }
 
 .site-nav-ul li:hover {
-    background-color: #f8f8f8;
+    background-color: #f8f8f8; /* Greyish */
+    /* background-color: #FFCFCF; */ /* Pink */
+    /* background-color: #EEE8AA; */
     text-decoration: none;
 }
 
