@@ -1,50 +1,62 @@
-<div class="page-container">
-    <div #deliveryNote class="delivery-note">
+<header class="nav-header">
+    <div class="main-nav container">
         <div class="row">
-            <div class="col-12">
-                <h4 class="delivery-note-title">free standard uk delivery over £100</h4>
+            <div class="col-5">
+                <ul class="nav" id="left-nav">
+                    <li id="currency">GBP
+                        <i class="fa fa-angle-down"></i>
+                    </li>
+                    <li id="help">Need Help?</li>
+                    <li id="news-letter">
+                        <i class="fa fa-envelope-o fa-lg"></i>
+                        <span>sign up to our newsletter</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-3">
+                <h2>𝕷𝖆𝖈𝖊 𝕭𝖔𝖚𝖙𝖎𝖖𝖚𝖊</h2>
+            </div>
+            <div class="col-4">
+                <ul class="nav" id="right-nav">
+                    <li id="search">
+                        <span>Search
+                            <i class="fa fa-search" style="font-weight: 300; margin-left: 10px;"></i>
+                        </span>
+                    </li>
+                    <li id="love">
+                        <i class="fa fa-heart-o fa-lg"></i>
+                    </li>
+                    <li id="help">sign in / join</li>
+                    <li id="news-letter">bag (0)</li>
+                </ul>
             </div>
         </div>
     </div>
-    <nav class="main-nav">
-        <div #logo class="logo">
-            <div class="row">
-                <div class="col-12">
-                    <h1 class="logo-text">𝓛𝓪𝓬𝓮 𝓑𝓸𝓾𝓽𝓲𝓺𝓾𝓮</h1>
-                </div>
-            </div>
-        </div>
-        <div #mainNav class="page-nav" [ngClass]="{'fixed-nav' : fixedNav == true}">
-            <div class="row">
-                <div class="col-12">
-                    <ul class="primary-nav center-block" [ngClass]="{'fixed-nav-padding' : fixedNav == true}">
-                        <li>
-                            <a href="">Home</a>
-                        </li>
-                        <li>
-                            <a href="">New!</a>
-                        </li>
-                        <li>
-                            <a href="">Sale</a>
-                        </li>
-                        <li>
-                            <a href="">Clothing</a>
-                        </li>
-                        <li>
-                            <a href="">Dresses</a>
-                        </li>
-                        <li>
-                            <a href="">Tops</a>
-                        </li>
-                        <li>
-                            <a href="">Shoes</a>
-                        </li>
-                        <li>
-                            <a href="">Accessories</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
+</header>
+<div class="site-nav">
+    <div class="main-nav container">
+        <ul class="site-nav-ul">
+            <li>
+                <a href="" style="color: red;">Sale</a>
+            </li>
+            <li>
+                <a href="">New!</a>
+            </li>
+            <li>
+                <a href="">Clothing</a>
+            </li>
+            <li>
+                <a href="">Dresses</a>
+            </li>
+            <li>
+                <a href="">Tops</a>
+            </li>
+            <li>
+                <a href="">Shoes</a>
+            </li>
+            <li>
+                <a href="">Accessories</a>
+            </li>
+        </ul>
+    </div>
 </div>

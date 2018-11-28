@@ -4,6 +4,22 @@
     src: url("resources/BentonSansBook.otf");
 }
 
+@font-face {
+    font-family: "FuturaPTBook";
+    src: url("resources/FuturaPTMedium.otf");
+}
+
+h4 {
+    font-family: 'FuturaPTBook', sans-serif;
+    font-size: 16px;
+    line-height: 1.25;
+    letter-spacing: 1px;
+    font-weight: 500;
+    color: #231f20;
+    margin-bottom: 15px;    
+    text-transform: uppercase;
+}
+
 ul {
     list-style: none;
     display: inline;
@@ -12,6 +28,14 @@ ul {
 ul li {
     display: inline;
     padding: 10px 15px;
+}
+
+a, a:hover {
+    text-decoration: none;
+}
+
+#no-padding-left {
+    padding-left: 0;
 }
 
 .center-block {
