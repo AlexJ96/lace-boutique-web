@@ -1,8 +1,9 @@
 .footer-container {
     min-height: 220px;
     width: 100%;
-    /* background-color: #ebebeb; */
-    background-color: rgba(255,207,207, 0.6);
+    background-color: #ebebeb;
+    /* background-color: #dedede; */
+    /* background-color: rgba(255,207,207, 0.6); */
     margin: 20px 0;
 }
 
@@ -23,6 +24,11 @@
 
 .contact-details p a, .help-details p a, .account-details p a, .discover-details p a, .about-details p a, .copyright-details p a {
     color: #4D4C4D;
+}
+
+.help-details p:hover, .account-details p:hover, .discover-details p:hover, .about-details p:hover, .copyright-details p:hover {
+    color: #231f20;
+    font-weight: 500;
 }
 
 .help-details p, .account-details p, .discover-details p, .about-details p {

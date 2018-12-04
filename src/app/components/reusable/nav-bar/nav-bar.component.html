@@ -1,62 +1,92 @@
-<header class="nav-header">
-    <div class="main-nav container">
-        <div class="row">
-            <div class="col-5">
-                <ul class="nav" id="left-nav">
-                    <li id="currency">GBP
-                        <i class="fa fa-angle-down"></i>
-                    </li>
-                    <li id="help">Need Help?</li>
-                    <li id="news-letter">
-                        <i class="fa fa-envelope-o fa-lg"></i>
-                        <span>sign up to our newsletter</span>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-3">
-                <h2>𝕷𝖆𝖈𝖊 𝕭𝖔𝖚𝖙𝖎𝖖𝖚𝖊</h2>
-            </div>
-            <div class="col-4">
-                <ul class="nav" id="right-nav">
-                    <li id="search">
-                        <span>Search
-                            <i class="fa fa-search" style="font-weight: 300; margin-left: 10px;"></i>
-                        </span>
-                    </li>
-                    <li id="love">
-                        <i class="fa fa-heart-o fa-lg"></i>
-                    </li>
-                    <li id="help">sign in / join</li>
-                    <li id="news-letter">bag (0)</li>
-                </ul>
+<div style="height: 133px;">
+    <header #navHeader class="nav-header">
+        <div class="main-nav container">
+            <div class="row">
+                <div class="col-5">
+                    <ul class="nav" id="left-nav">
+                        <li id="currency">GBP
+                            <i class="fa fa-angle-down"></i>
+                        </li>
+                        <li id="help">Need Help?</li>
+                        <li id="news-letter">
+                            <i class="fa fa-envelope-o fa-lg"></i>
+                            <span>sign up to our newsletter</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-3">
+                    <h2>𝕷𝖆𝖈𝖊 𝕭𝖔𝖚𝖙𝖎𝖖𝖚𝖊</h2>
+                    <!-- <img src="../../../../assets/lblogo.png"/> -->
+                </div>
+                <div class="col-4">
+                    <ul class="nav" id="right-nav">
+                        <li id="search">
+                            <span>Search
+                                <i class="fa fa-search" style="font-weight: 300; margin-left: 10px;"></i>
+                            </span>
+                        </li>
+                        <li id="love" (mouseenter)="mouseEnterLoved()" (mouseleave)="mouseLeaveLoved()">
+                            <i class="fa fa-heart-o fa-lg"></i>
+                        </li>
+                        <li id="help">sign in / join</li>
+                        <li id="news-letter" (mouseenter)="mouseEnterBag()" (mouseleave)="mouseLeaveBag()">bag (0)</li>
+                    </ul>
+                </div>
             </div>
         </div>
+    </header>
+    <div #siteNav class="site-nav">
+        <div class="main-nav container">
+            <ul class="site-nav-ul">
+                <li>
+                    <a href="" style="color: red;">Sale</a>
+                </li>
+                <li>
+                    <a href="">New!</a>
+                </li>
+                <li>
+                    <a href="">Clothing</a>
+                </li>
+                <li>
+                    <a href="">Dresses</a>
+                </li>
+                <li>
+                    <a href="">Tops</a>
+                </li>
+                <li>
+                    <a href="">Shoes</a>
+                </li>
+                <li>
+                    <a href="">Accessories</a>
+                </li>
+            </ul>
+            <ul #userNav class="nav" id="right-nav" style="margin-top: 5px; display: none;">
+                <li id="search">
+                    <span>Search
+                        <i class="fa fa-search" style="font-weight: 300; margin-left: 10px;"></i>
+                    </span>
+                </li>
+                <li id="love" (click)="toggleLovedItems();" (mouseenter)="mouseEnterLoved()" (mouseleave)="mouseLeaveLoved()">
+                    <i class="fa fa-heart-o fa-lg"></i>
+                </li>
+                <li id="help">sign in / join</li>
+                <li id="news-letter" (click)="toggleBagItems();" (mouseenter)="mouseEnterBag()" (mouseleave)="mouseLeaveBag()">bag (0)</li>
+            </ul>
+        </div>
     </div>
-</header>
-<div class="site-nav">
-    <div class="main-nav container">
-        <ul class="site-nav-ul">
-            <li>
-                <a href="" style="color: red;">Sale</a>
-            </li>
-            <li>
-                <a href="">New!</a>
-            </li>
-            <li>
-                <a href="">Clothing</a>
-            </li>
-            <li>
-                <a href="">Dresses</a>
-            </li>
-            <li>
-                <a href="">Tops</a>
-            </li>
-            <li>
-                <a href="">Shoes</a>
-            </li>
-            <li>
-                <a href="">Accessories</a>
-            </li>
-        </ul>
+</div>
+<div class="container">
+    <div #lovedItems class="loved-items">
+        <div class="no-loved">
+            <p>No items on my wishlist</p>
+        </div>
+    </div>
+    <div #bagItems class="bag-items">
+        <div class="no-bag-items">
+            <p>No items in bag</p>
+        </div>
+        <div class="bag-total">
+            <p>Total &pound;0.00</p>
+        </div>
     </div>
 </div>

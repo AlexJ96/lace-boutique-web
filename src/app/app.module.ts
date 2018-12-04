@@ -8,9 +8,15 @@ import { RouterModule, Routes, ActivatedRouteSnapshot, Router } from '@angular/r
 import { HomeComponent } from './components/home/home.component';
 import { NavBarComponent } from './components/reusable/nav-bar/nav-bar.component';
 import { FooterComponent } from './components/reusable/footer/footer.component';
+import { ShopComponent } from './components/shop/shop.component';
+import { LovedItemsComponents } from './components/account/loved-items/loved-items.component';
+import { BagItemsComponent } from './components/account/bag-items/bag-items.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent }
+  { path: '', component: HomeComponent },
+  { path: 'shop/category/:id', component: ShopComponent },
+  { path: 'wishlist', component: LovedItemsComponents },
+  { path: 'cart', component: BagItemsComponent }
 
   // TODO
   /*{ path: '404', component: ErrorNotFoundComponent },
@@ -23,7 +29,10 @@ const routes: Routes = [
     AppComponent,
     HomeComponent,
     NavBarComponent,
-    FooterComponent
+    FooterComponent,
+    ShopComponent,
+    LovedItemsComponents,
+    BagItemsComponent
   ],
   imports: [
     BrowserModule,

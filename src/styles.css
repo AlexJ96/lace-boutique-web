@@ -42,4 +42,138 @@ a, a:hover {
     display: block;
     margin-left: auto;
     margin-right: auto;
-  }
+}
+
+.no-text-transform {
+    text-transform: none !important;
+}
+
+.shop-plus {
+    float:right; 
+    padding: 13px;
+}
+
+.arrow-up {
+    width: 0; 
+    height: 0; 
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    
+    border-bottom: 5px solid black;
+}
+
+/**
+Shop Components
+**/
+.shop-filter, .shop-sort, .shop-pages, .view-all, .item-amount {
+    border: 1px solid #dedede;
+    height: 38px;
+    line-height: 34px;
+    font-size: 13px;
+    cursor: pointer;
+    position: relative;
+}
+
+.shop-filter:hover, .shop-sort:hover, .view-all:hover, .item-amount:hover {
+    background-color: #dedede;
+}
+
+.shop-filter-dropdown, .shop-sort-dropdown, .item-amount-dropdown {
+    position: absolute;
+    width: calc(100% + 2px);
+    border: 1px solid #dedede;
+    background-color: white;
+    height: 50px;
+    margin-left: -1px;
+    display: none;
+}
+
+.shop-content {
+    height: auto;
+    margin-top: 35px;
+}
+
+.shop-pages {
+    border: none;
+    cursor: default;
+}
+
+.page-info i {
+    padding: 11.6px;
+    border: 1px solid #dedede;
+    cursor: pointer;
+    /*opacity: 0.5;*/ /*Ready for when they are disabled - set opacity lower*/
+}
+
+.back-arrow, .forward-arrow {
+    border: 1px solid #dedede;
+    width: 50px;
+    height: 20px;
+}
+
+.page-info i:hover {
+    background-color: #dedede;
+}
+
+.filter-text, .sort-text, .page-info, .view-all-text, .back-to-top-text, .item-name, .item-description, .item-price, .item-amount-text  {
+    font-family: 'FuturaPTBook', sans-serif;
+    color: #231f20;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 13px;
+    padding-left: 10px;
+}
+
+.item-amount, .view-all {
+    text-align: center;
+}
+
+.page-info, .item-amount-text, .view-all-text {
+    padding-left: 0;
+}
+
+.back-to-top {
+    width: 130px;
+    padding: 5px 0;
+    padding-left: 22px;
+    cursor: pointer;
+}
+
+.back-to-top-text i {
+    padding-left: 25px;
+}
+
+.shop-item {
+    margin-top: 25px;
+}
+
+.item-image {
+    background-color: black;
+    width: 100%;
+    height: 300px;
+}
+
+.item-content {
+    margin-top: 15px;
+    border-top: 1px solid #dedede;
+}
+
+.item-description, .item-price {
+    text-transform: none;
+}
+
+.item-description {
+    font-size: 11px;
+}
+
+.item-name, .item-description, .item-price {
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.item-price {
+    margin-top: 5px;
+}
+
+

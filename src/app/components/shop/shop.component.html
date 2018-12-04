@@ -1,0 +1,131 @@
+<br/>
+<div class="container">
+    <div class="page-settings">
+        <div class="row">
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-xl-7 col-lg-7 col-md-7">
+                        <div class="shop-filter" (click)="displayFilterMenu();">
+                            <span class="filter-text">Filter</span>
+                            <span class="filter-text no-text-transform">(0 Products)</span>
+                            <i class="fa shop-plus" [ngClass]="{'fa-plus' : filterMenuOpen == false, 'fa-minus' : filterMenuOpen == true}"></i>
+                            <div #shopFilter class="shop-filter-dropdown">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-5 col-lg-5 col-md-5">
+                        <div class="shop-sort" (click)="displaySortMenu();">
+                            <span class="sort-text">Sort By</span>
+                            <i class="fa shop-plus" [ngClass]="{'fa-plus' : sortMenuOpen == false, 'fa-minus' : sortMenuOpen == true}"></i>
+                            <div #shopSort class="shop-sort-dropdown">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="row justify-content-end">
+                    <div class="col-xl-5 col-lg-6 col-md-8" style="max-width: 90%;">
+                        <div class="shop-pages">
+                            <span class="page-info">
+                                <i class="fa fa-chevron-left" style="margin-right: 10px;"></i>
+                                Page 1 of 1
+                                <i class="fa fa-chevron-right" style="margin-left: 10px"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="item-amount" (click)="displayItemAmountMenu();">
+                            <span class="item-amount-text">
+                                25
+                                <i class="fa" [ngClass]="{ 'fa-chevron-down' : itemAmtMenuOpen == false, 'fa-chevron-up' : itemAmtMenuOpen == true }"></i>
+                                <div #itemAmt class="item-amount-dropdown">
+
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4">
+                        <div class="view-all">
+                            <span class="view-all-text">
+                                View All
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="shop-content">
+        <div class="row">
+            <div *ngFor="let bob of tests" class="col-4">
+                <div class="shop-item">
+                    <div class="item-image">
+
+                    </div>
+                    <div class="item-content">
+                        <span class="item-name">Item Name
+                            <i class="fa fa-heart-o" style="float: right; margin: 5px; cursor:pointer;"></i>
+                        </span>
+                        <p class="item-description">Item Description</p>
+                        <p class="item-price">&pound;59.99</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shop Content End -->
+    <div class="shop-end">
+        <div class="row justify-content-end">
+            <div class="col-6">
+                <div class="row justify-content-end">
+                    <div class="col-xl-5 col-lg-6 col-md-8">
+                        <div class="shop-pages">
+                            <span class="page-info">
+                                <i class="fa fa-chevron-left" style="margin-right: 10px;"></i>
+                                Page 1 of 1
+                                <i class="fa fa-chevron-right" style="margin-left: 10px"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="item-amount" (click)="displayItemAmountTwoMenu();">
+                            <span class="item-amount-text">
+                                25
+                                <i class="fa" [ngClass]="{ 'fa-chevron-down' : itemAmtTwoMenuOpen == false, 'fa-chevron-up' : itemAmtTwoMenuOpen == true }"></i>
+                                <div #itemAmtTwo class="item-amount-dropdown">
+
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4">
+                        <div class="view-all">
+                            <span class="view-all-text">
+                                View All
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--
+        Back to Top
+    -->
+    <div class="row justify-content-center">
+        <div class="col-2">
+            <div class="back-to-top" (click)="scrollToTop();">
+                <span class="back-to-top-text">
+                    <i class="fa fa-chevron-up fa-lg"></i>
+                    <br/> Back To Top
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

@@ -2,11 +2,27 @@
     border-bottom: 1px solid #dedede;
 }
 
+.nav-header {
+    min-height: 78px;
+    position: relative;
+}
+
+.site-nav {
+    min-height: 55px;
+    margin-top: 78px;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    z-index: 1030;
+    background-color: white;
+}
+
 .main-nav {
     padding: 15px 0;
 }
 
-.nav, .nav li span, .site-nav-ul li a {
+.nav, .nav li span, .site-nav-ul li a, .site-nav-ul-fixed li a {
     font-family: 'FuturaPTBook', sans-serif;
     font-size: 12px;
     letter-spacing: 1px;
@@ -15,31 +31,44 @@
     cursor: pointer;
 }
 
-.site-nav-ul {
+.site-nav-ul, .site-nav-ul-fixed {
     padding-left: 0;
 }
 
-.site-nav-ul li {
+.site-nav-ul li, .site-nav-ul-fixed li {
     padding: 16px 15px;
     padding-bottom: 16.8px;
     cursor: pointer;
 }
 
-.site-nav-ul li a {
+.site-nav-ul-fixed li {
+    padding-top: 21px;
+    padding-bottom: 34px;
+}
+
+.site-nav-ul-fixed {
+    margin-top: 5px;
+}
+
+.site-nav-ul li a, .site-nav-ul-fixed li a {
     color: #000;
     font-size: 14px;
 }
 
-.site-nav-ul li:hover {
+.site-nav-ul li:hover, .site-nav-ul-fixed li:hover {
     background-color: #f8f8f8; /* Greyish */
     /* background-color: #FFCFCF; */ /* Pink */
     /* background-color: #EEE8AA; */
     text-decoration: none;
 }
 
-.site-nav-ul li:hover>a, .site-nav-ul li a:hover {
+.site-nav-ul li:hover>a, .site-nav-ul li a:hover, .site-nav-ul-fixed li:hover>a, .site-nav-ul-fixed li a:hover {
     padding-bottom: 15px;
     border-bottom: 2px solid #000;
+}
+
+.site-nav-ul-fixed li:hover>a, .site-nav-ul-fixed li a:hover {
+    padding-bottom: 33px;
 }
 
 #left-nav li span {
@@ -68,4 +97,33 @@
     margin-right: -4px;
     padding-left: 10px;
     color: #dedede;
+}
+
+.loved-items, .bag-items {
+    z-index: 1032; 
+    background-color: white; 
+    border: 1px solid #dedede;
+    width: 25%; 
+    right: 0;
+    top: 54.5px; 
+    position: fixed;
+    display: none;
+}
+
+.no-loved {
+    border-bottom: 0px solid #dedede;
+}
+
+.no-loved p, .no-bag-items p, .bag-total p {
+    font-family: 'FuturaPTBook', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #231f20;
+    text-align: center;
+    padding-top: 15px;
+}
+
+.bag-total {
+    border-top: 1px solid #dedede;
 }
