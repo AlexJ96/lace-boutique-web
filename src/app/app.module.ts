@@ -13,16 +13,20 @@ import { LovedItemsComponents } from './components/account/loved-items/loved-ite
 import { BagItemsComponent } from './components/account/bag-items/bag-items.component';
 import { ShopItemComponent } from './components/shop/shop-item/shop-item.component';
 import { LoginComponent } from './components/account/login/login.component';
-import { RegistrationComponent } from './components/account/registration/registration.component';
+import { RegistrationComponent } from './components/account/register/registration.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'shop/category/:id', component: ShopComponent },
-  { path: 'shop/item/:id', component: ShopItemComponent },
-  { path: 'wishlist', component: LovedItemsComponents },
-  { path: 'cart', component: BagItemsComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'registration', component: RegistrationComponent }
+  { path: 'shop', children: [
+    { path: 'category/:id', component: ShopComponent },
+    { path: 'item/:id', component: ShopItemComponent }
+  ]},
+  { path: 'account', children: [ 
+    { path: 'login', component: LoginComponent },
+    { path: 'register', component: RegistrationComponent },
+    { path: 'wishlist', component: LovedItemsComponents },
+    { path: 'cart', component: BagItemsComponent }
+  ]}
 
   // TODO
   /*{ path: '404', component: ErrorNotFoundComponent },
