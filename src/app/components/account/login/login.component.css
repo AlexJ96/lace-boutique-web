@@ -1,0 +1,30 @@
+.items-container {
+    border: 2px solid #dedede;
+    width: 100%;
+    height: 400px;
+}
+
+
+.input-text {
+    background-color: #eeeeee;
+    height: 25px;
+    margin-left: 1px;
+    margin-right: 1px;
+    width:100%;
+}
+
+.input-text:hover {
+    background-color: #87898c;
+}
+
+
+.title {
+    font-family: 'FuturaPTBook', sans-serif;
+    text-align: center;
+    font-size: 30px;
+    border-bottom: 2px dotted #dedede;
+}
+
+.form-label {
+    font-size: 13px;
+}
