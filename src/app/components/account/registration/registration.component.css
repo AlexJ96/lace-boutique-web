@@ -27,4 +27,22 @@
 
 .form-label {
     font-size: 13px;
+    text-transform: uppercase;
+}
+
+.form-button {
+    color: white;
+    text-transform: uppercase;
+    background-color: #87898c;
+}
+
+.size-select, .amount-select {
+    background-color: #a6a6a6bf;
+    text-align: center;
+    color: white;
+    /*height: 25px;*/
+}
+
+.size-select:hover, .amount-select:hover {
+    background-color: #a6a6a6;
 }
