@@ -1,5 +1,6 @@
 import { OnInit, Component, ElementRef, ViewChild } from "@angular/core";
 import { ActivatedRoute, Params } from "@angular/router";
+import { Item } from "../../models/item";
 
 @Component({
     selector: 'shop',
@@ -21,6 +22,8 @@ export class ShopComponent implements OnInit {
     itemAmtTwoMenuOpen: boolean = false;
 
     tests = ["", "", "", "", "", ""];
+
+    item = new Item();
 
     constructor(private route: ActivatedRoute) { }
     ngOnInit() {

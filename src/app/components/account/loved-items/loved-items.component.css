@@ -21,14 +21,3 @@
 .page-settings {
     margin-top: 30px;
 }
-
-.add-item {
-    margin-top: 15px;
-    cursor: pointer;
-    border: 1px solid #dedede;
-    height: 30px;
-}
-
-.add-item:hover {
-    background-color: #dedede;
-}

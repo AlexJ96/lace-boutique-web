@@ -11,10 +11,12 @@ import { FooterComponent } from './components/reusable/footer/footer.component';
 import { ShopComponent } from './components/shop/shop.component';
 import { LovedItemsComponents } from './components/account/loved-items/loved-items.component';
 import { BagItemsComponent } from './components/account/bag-items/bag-items.component';
+import { ShopItemComponent } from './components/shop/shop-item/shop-item.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'shop/category/:id', component: ShopComponent },
+  { path: 'shop/item/:id', component: ShopItemComponent },
   { path: 'wishlist', component: LovedItemsComponents },
   { path: 'cart', component: BagItemsComponent }
 
@@ -31,6 +33,7 @@ const routes: Routes = [
     NavBarComponent,
     FooterComponent,
     ShopComponent,
+    ShopItemComponent,
     LovedItemsComponents,
     BagItemsComponent
   ],

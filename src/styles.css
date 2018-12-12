@@ -115,7 +115,7 @@ Shop Components
     background-color: #dedede;
 }
 
-.filter-text, .sort-text, .page-info, .view-all-text, .back-to-top-text, .item-name, .item-description, .item-price, .item-amount-text  {
+.filter-text, .sort-text, .page-info, .view-all-text, .back-to-top-text, .item-name, .item-description, .item-price, .item-amount-text, .shop-item-name, .shop-item-description p, .shop-item-price, .shop-item-colour  {
     font-family: 'FuturaPTBook', sans-serif;
     color: #231f20;
     font-weight: 500;
@@ -176,4 +176,15 @@ Shop Components
     margin-top: 5px;
 }
 
+.add-item {
+    margin-top: 15px;
+    cursor: pointer;
+    border: 1px solid #dedede;
+    background-color: #dedede;
+    height: 30px;
+}
+
+.add-item:hover {
+    background-color: #dedede;
+}
 
