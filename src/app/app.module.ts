@@ -13,7 +13,7 @@ import { LovedItemsComponents } from './components/account/loved-items/loved-ite
 import { BagItemsComponent } from './components/account/bag-items/bag-items.component';
 import { ShopItemComponent } from './components/shop/shop-item/shop-item.component';
 import { LoginComponent } from './components/account/login/login.component';
-
+import { RegistrationComponent } from './components/account/registration/registration.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,7 +21,8 @@ const routes: Routes = [
   { path: 'shop/item/:id', component: ShopItemComponent },
   { path: 'wishlist', component: LovedItemsComponents },
   { path: 'cart', component: BagItemsComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'registration', component: RegistrationComponent }
 
   // TODO
   /*{ path: '404', component: ErrorNotFoundComponent },
@@ -39,7 +40,8 @@ const routes: Routes = [
     ShopItemComponent,
     LovedItemsComponents,
     BagItemsComponent,
-    LoginComponent
+    LoginComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
