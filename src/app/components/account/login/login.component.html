@@ -7,35 +7,35 @@
     </div>
 
     <div></div>
+    <form #f="ngForm">
     
-    <div class="center-block col-6">
-        <div class="form-group row">
-            <label for="email" class="col-4 col-form-label form-label">Email</label>
-            <div class="col-8">
-                <input class="input-text" type="email" value="" id="email">
+        <div class="center-block col-6">
+            <div class="form-group row">
+                <label for="email" class="col-4 col-form-label form-label">Email</label>
+                <div class="col-8">
+                    <input class="input-text" type="email" value="" id="email" name="email" #ctrl="ngModel" [(ngModel)]="login.email" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="password" class="col-4 col-form-label form-label">Password</label>
+                <div class="col-8">
+                    <input class="input-text" type="password" value="" id="password" name="password" [(ngModel)]="login.password" required>
+                </div>
+            </div>
+
+            <div class="add-item" style="text-align: center;" (click)="login(f)">
+                <span class="item-name">
+                    Login
+                </span>
+            </div>
+
+            <div class="row">
+                <a class="item-name form-label center-block"  style="margin-top: 15px; cursor:pointer; text-decoration: underline;" [routerLink]="['/account/passwordReset']">Forgotten your password?</a>
+            </div>
+            <div class="row">
+                <a class="item-name form-label center-block"  style="margin-top: 15px; cursor:pointer; text-decoration: underline;" [routerLink]="['/account/register']">Register with us</a>
             </div>
         </div>
-
-        <div class="form-group row">
-            <label for="password" class="col-4 col-form-label form-label">Password</label>
-            <div class="col-8">
-                <input class="input-text" type="password" value="" id="password">
-            </div>
-        </div>
-
-        <div class="add-item" style="text-align: center;">
-            <span class="item-name">
-                Login
-            </span>
-        </div>
-
-        <div class="row">
-            <!-- <div class="col-6"> -->
-            <a class="item-name form-label center-block"  style="margin-top: 15px; cursor:pointer; text-decoration: underline;" [routerLink]="['/account/passwordReset']">Forgotten your password?</a>
-        </div>
-        <div class="row">
-            <a class="item-name form-label center-block"  style="margin-top: 15px; cursor:pointer; text-decoration: underline;" [routerLink]="['/account/register']">Register with us</a>
-        </div>
-        <!-- </div> -->
-    </div>
+    </form>
 </div>
