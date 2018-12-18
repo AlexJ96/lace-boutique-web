@@ -8,20 +8,23 @@ export class ApiService {
 
     constructor(private http: HttpClient) { }
 
-    post(endpoint: String, body: any = {}) {
-        console.log(localStorage.getItem("lbt"));
+    async post(endpoint: String, body: any = {}) {
+        let token = this.getToken();
+        if (token == null || token == undefined)
+            token = await this.requestNewToken();
         return new Promise<any>(resolve => {
             this.http.post<any>(this.apiUrl + endpoint, JSON.stringify(body), {
-                headers: new HttpHeaders().append('LBT', 'LBTokenBearer ' + localStorage.getItem("lbt"))}).subscribe(
-                    response => {
-                        //this.handleApiResponse(response, surpressErrors);
-                        resolve(response);
-                    },
-                    error => {
-                        console.log(error);
-                        // this.handleApiResponse(error, surpressErrors);
-                    }
-                );
+                headers: new HttpHeaders().append('LBT', 'LBTokenBearer ' + token)
+            }).subscribe(
+                response => {
+                    //this.handleApiResponse(response, surpressErrors);
+                    resolve(response);
+                },
+                error => {
+                    console.log(error);
+                    // this.handleApiResponse(error, surpressErrors);
+                }
+            );
         });
     }
 
@@ -56,7 +59,17 @@ export class ApiService {
             observe: "response" as 'response',
             headers: new HttpHeaders()
                 .set("Content-Type", "application/json; charset=utf-8")
-                .set("Authorization", "Bearer " +localStorage.getItem("lbt"))
+                .set("Authorization", "Bearer " + this.getToken())
         };
+    }
+
+    getToken() {
+        return localStorage.getItem("lbt");
+    }
+
+    async requestNewToken() {
+        let token = await this.get("token/request-token");
+        localStorage.setItem("lbt", token);
+        return token;
     }
 }

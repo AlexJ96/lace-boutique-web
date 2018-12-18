@@ -10,18 +10,14 @@ import { ApiService } from "../../../services/api.service";
     styleUrls: ['./registration.component.css']
 })
 
-export class RegistrationComponent implements OnInit {
+export class RegistrationComponent {
+
     constructor(private api: ApiService) {}
-    async ngOnInit() {
-        let token = await  this.api.get("token/request-token");
-        localStorage.setItem("lbt", token);
-    }
 
     async register(f){
         let data = f.value;
         let res = await this.api.post("account/register", data);
         console.log(res);
-    	
     }
 
 }
