@@ -11,7 +11,7 @@ export class ApiService {
     post(endpoint: String, body: any = {}) {
         console.log(localStorage.getItem("lbt"));
         return new Promise<any>(resolve => {
-            this.http.post<any>(this.apiUrl + endpoint, null /*JSON.stringify(body)*/, {
+            this.http.post<any>(this.apiUrl + endpoint, JSON.stringify(body), {
                 headers: new HttpHeaders().append('LBT', 'LBTokenBearer ' + localStorage.getItem("lbt"))}).subscribe(
                     response => {
                         //this.handleApiResponse(response, surpressErrors);

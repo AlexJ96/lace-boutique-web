@@ -13,51 +13,57 @@
             Register with Lace Boutique
         </div>
     </div>
-    
-    <div class="center-block col-6">
-        <div class="form-group row">
-            <label for="email" class="col-4 col-form-label form-label">Email</label>
-            <div class="col-8">
-                <input class="input-text" type="email" value="" id="email">
+    <form #f="ngForm">
+        <div class="center-block col-6">
+            <div class="form-group row">
+                <label for="email" class="col-4 col-form-label form-label">Email</label>
+                <div class="col-8">
+                    <input class="input-text" type="email" value="" id="email"  name="email" #ctrl="ngModel" required [(ngModel)]="register.email" [email]="true">
+
+                </div>
+            </div>
+
+            <div *ngIf="register.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                Invalid Email Address
+            </div>
+
+            <div class="form-group row">
+                <label for="confirmEmail" class="col-4 col-form-label form-label">Confirm Email</label>
+                <div class="col-8">
+                    <input class="input-text" type="email" value="" id="confirmEmail" name="confirmEmail" [(ngModel)]="register.confirmEmail" [email]="true">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="password" class="col-4 col-form-label form-label">Password</label>
+                <div class="col-8">
+                    <input class="input-text" type="password" value="" id="password" name="password" [(ngModel)]="register.password">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="confirmPassword" class="col-4 col-form-label form-label">Confirm Password</label>
+                <div class="col-8">
+                    <input class="input-text" type="password" value="" id="confirmPassword" name="confirmPassword" [(ngModel)]="register.confirmPassword">
+                </div>
+            </div>
+
+            <div class="mb-3 form-label">
+                Have an account already? 
+                <a class="item-name form-label"  style="text-decoration: underline;" [routerLink]="['/account/login']">Login</a>
+                instead!
+            </div>
+
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="subscription" name="subscription" name="subscription" [(ngModel)]="register.subscription">
+                <label class="form-check-label form-label" for="subscription">I am happy to subscribe to Lace Boutique offers by email.</label>
+            </div>
+
+            <div class="add-item" style="text-align: center;" (click)="register(f)">
+                <span class="item-name">
+                    Register
+                </span>
             </div>
         </div>
-
-        <div class="form-group row">
-            <label for="confirmEmail" class="col-4 col-form-label form-label">Confirm Email</label>
-            <div class="col-8">
-                <input class="input-text" type="email" value="" id="confirmEmail">
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="password" class="col-4 col-form-label form-label">Password</label>
-            <div class="col-8">
-                <input class="input-text" type="password" value="" id="password">
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="confirmPassword" class="col-4 col-form-label form-label">Confirm Password</label>
-            <div class="col-8">
-                <input class="input-text" type="password" value="" id="confirmPassword">
-            </div>
-        </div>
-
-        <div class="mb-3 form-label">
-            Have an account already? 
-            <a class="item-name form-label"  style="text-decoration: underline;" [routerLink]="['/account/login']">Login</a>
-            instead!
-        </div>
-
-        <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="subscription">
-            <label class="form-check-label form-label" for="subscription">I am happy to subscribe to Lace Boutique offers by email.</label>
-        </div>
-
-        <div class="add-item" style="text-align: center;">
-            <span class="item-name">
-                Register
-            </span>
-        </div>
-    </div>
+    </form>
 </div>

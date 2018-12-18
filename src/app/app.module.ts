@@ -14,6 +14,7 @@ import { BagItemsComponent } from './components/account/bag-items/bag-items.comp
 import { ShopItemComponent } from './components/shop/shop-item/shop-item.component';
 import { LoginComponent } from './components/account/login/login.component';
 import { RegistrationComponent } from './components/account/register/registration.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -45,7 +46,7 @@ const routes: Routes = [
     LovedItemsComponents,
     BagItemsComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,6 +56,8 @@ const routes: Routes = [
       routes,
       { enableTracing: false },
     ),
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [RouterModule],
   providers: [ApiService],
