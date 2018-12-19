@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import * as decodeJwt from "jwt-decode";
 
 @Injectable()
 export class ApiService {
@@ -64,7 +65,20 @@ export class ApiService {
     }
 
     getToken() {
-        return localStorage.getItem("lbt");
+        try {
+            if (localStorage.getItem("lbt")) {
+              var token = localStorage.getItem("lbt");
+              if (token == null || token == undefined || token == "") {
+                return null;
+              }
+              return decodeJwt(token);
+            } else {
+              return null;
+            }
+          }
+          catch (err) {
+            return null;
+          }
     }
 
     async requestNewToken() {

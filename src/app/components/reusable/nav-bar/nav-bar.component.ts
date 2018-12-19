@@ -1,4 +1,5 @@
 import { OnInit, Component, HostListener, ViewChild, ElementRef } from "@angular/core";
+import { ApiService } from "../../../services/api.service";
 
 @Component({
     selector: 'nav-bar',
@@ -16,7 +17,7 @@ export class NavBarComponent implements OnInit {
     lovedItemsShowing: boolean = false;
     bagItemsShowing: boolean = false;
 
-    constructor() { }
+    constructor(private api:ApiService) { }
     ngOnInit() { }
 
     @HostListener("window:scroll", [])
@@ -97,5 +98,10 @@ export class NavBarComponent implements OnInit {
     mouseLeaveLoved() {
         this.lovedItems.nativeElement.style.display = 'none';
         this.lovedItemsShowing = false;
+    }
+
+
+    test() {
+        console.log(this.api.getToken());
     }
 }
