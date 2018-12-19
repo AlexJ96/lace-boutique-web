@@ -19,9 +19,6 @@ export class RegistrationComponent implements OnInit {
 
     async ngOnInit() {
         this.registerServerErrorMessage = '';
-        let token = await  this.api.get("token/request-token");
-        
-        console.log(token);
     }
 
     async register(f){
