@@ -1,6 +1,4 @@
 import { OnInit, Component, ReflectiveInjector } from "@angular/core";
-import { AbstractControl, ValidatorFn } from '@angular/forms';
-
 
 import { ApiService } from "../../../services/api.service";
 
