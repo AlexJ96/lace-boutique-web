@@ -14,5 +14,9 @@ export class AppComponent implements OnInit {
     if (token == null) {
       token = this.api.requestNewToken();
     }
+    console.log(token);
+
+    console.log("from local storage");
+    console.log(typeof localStorage.getItem("lbt") == "string");
   }
 }

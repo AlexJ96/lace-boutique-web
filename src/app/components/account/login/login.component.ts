@@ -8,17 +8,25 @@ import { ApiService } from "../../../services/api.service";
     styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+    
+    public registerServerErrorMessage : String;
+
 	constructor(private api: ApiService) {}
     async ngOnInit() {
-        let token = await  this.api.get("token/request-token");
-        localStorage.setItem("lbt", token);
+        this.registerServerErrorMessage = '';
     }
 
     async login(f){
         let data = f.value;
+        console.log(data);
         let res = await this.api.post("account/login", data);
-        console.log(res);
-    	
+        if (res !== 'Done'){
+            this.registerServerErrorMessage = res;
+        }
+    }
+
+    get registerServerErrorMsg(){
+        return this.registerServerErrorMessage;
     }
     
 }
