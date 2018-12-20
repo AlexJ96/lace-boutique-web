@@ -60,7 +60,7 @@ export class ApiService {
             observe: "response" as 'response',
             headers: new HttpHeaders()
                 .set("Content-Type", "application/json; charset=utf-8")
-                .set("Authorization", "Bearer " + this.getToken())
+                .set("Authorization", "Bearer " + localStorage.getItem("lbt"))
         };
     }
 
@@ -71,10 +71,6 @@ export class ApiService {
               if (token == null || token == undefined || token == "") {
                 return null;
               }
-              console.log("getToken()");
-              console.log(token);
-              console.log("getToken() After decode");
-              console.log(decodeJwt(token));
               return decodeJwt(token);
             } else {
               return null;
@@ -98,8 +94,6 @@ export class ApiService {
     async requestNewToken() {
         let token = await this.get("token/request-token");
         localStorage.setItem("lbt", token);
-        console.log("requestNewToken()");
-        console.log(token);
         return token;
     }
 
