@@ -100,8 +100,4 @@ export class NavBarComponent implements OnInit {
         this.lovedItemsShowing = false;
     }
 
-
-    test() {
-        console.log(this.api.getToken());
-    }
 }

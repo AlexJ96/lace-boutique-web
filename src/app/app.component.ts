@@ -7,16 +7,22 @@ import { ApiService } from './services/api.service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private api:ApiService) { }
+  constructor(private api: ApiService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     let token = this.api.getToken();
-    if (token == null) {
-      token = this.api.requestNewToken();
-    }
-    console.log(token);
 
-    console.log("from local storage");
-    console.log(typeof localStorage.getItem("lbt") == "string");
+    if (token == null) {
+      await this.api.requestNewToken();
+      token = this.api.getToken();
+    } else { 
+      let expiry = token.exp;
+      let current = Date.now() / 1000;
+      if (expiry < current) {
+        await this.api.refreshToken();
+        token = this.api.getToken();
+      }
+    }
   }
+
 }

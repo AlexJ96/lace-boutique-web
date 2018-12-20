@@ -28,7 +28,8 @@
                         <li id="love" [routerLink]="['/account/wishlist']" (mouseenter)="mouseEnterLoved()" (mouseleave)="mouseLeaveLoved()">
                             <i class="fa fa-heart-o fa-lg"></i>
                         </li>
-                        <li id="help" [routerLink]="['/account/login']">sign in / join</li>
+                        <li id="help" *ngIf="this.api.getToken().info.account == ''" [routerLink]="['/account/login']">sign in / join</li>
+                        <li id="help" *ngIf="this.api.getToken().info.account != ''" [routerLink]="['/account']">my account</li>
                         <li id="news-letter" [routerLink]="['/account/cart']" (mouseenter)="mouseEnterBag()" (mouseleave)="mouseLeaveBag()">bag (0)</li>
                     </ul>
                 </div>
@@ -69,7 +70,8 @@
                 <li id="love" [routerLink]="['/account/wishlist']" (click)="toggleLovedItems();" (mouseenter)="mouseEnterLoved()" (mouseleave)="mouseLeaveLoved()">
                     <i class="fa fa-heart-o fa-lg"></i>
                 </li>
-                <li id="help" [routerLink]="['/account/login']">sign in / join</li>
+                <li id="help" *ngIf="this.api.getToken().info.account == ''" [routerLink]="['/account/login']">sign in / join</li>
+                <li id="help" *ngIf="this.api.getToken().info.account != ''" [routerLink]="['/account']">my account</li>
                 <li id="news-letter" [routerLink]="['/account/cart']" (click)="toggleBagItems();" (mouseenter)="mouseEnterBag()" (mouseleave)="mouseLeaveBag()">bag (0)</li>
             </ul>
         </div>
