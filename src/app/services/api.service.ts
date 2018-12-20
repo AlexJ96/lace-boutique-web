@@ -10,7 +10,7 @@ export class ApiService {
     constructor(private http: HttpClient) { }
 
     async post(endpoint: String, body: any = {}) {
-        let token = this.getToken();
+        let token = localStorage.getItem("lbt");
         if (token == null || token == undefined)
             token = await this.requestNewToken();
         return new Promise<any>(resolve => {
@@ -81,9 +81,23 @@ export class ApiService {
           }
     }
 
+    async refreshToken() {
+        let token = localStorage.getItem("lbt");
+        if (token != null || token != undefined) {
+            token = await this.post("token/refresh-token", {Token: token});
+        } else {
+            token = await this.requestNewToken();
+        }
+        return token;
+    }
+
     async requestNewToken() {
         let token = await this.get("token/request-token");
         localStorage.setItem("lbt", token);
         return token;
+    }
+
+    storeToken(token) {
+        localStorage.setItem("lbt", token);
     }
 }
