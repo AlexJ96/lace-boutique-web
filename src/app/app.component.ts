@@ -23,7 +23,6 @@ export class AppComponent implements OnInit {
         token = this.api.getToken();
       }
     }
-    console.log(token);
   }
 
 }

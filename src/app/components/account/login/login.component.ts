@@ -19,6 +19,11 @@ export class LoginComponent {
             //
         }
         console.log(this.api.getToken());
+    
+    public registerServerErrorMessage : String;
+
+    get registerServerErrorMsg(){
+        return this.registerServerErrorMessage;
     }
     
 }

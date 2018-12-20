@@ -17,3 +17,16 @@ input {
     text-transform: uppercase;
 }
 
+.form-url {
+    margin-top: 15px; 
+    cursor:pointer; 
+    text-decoration: underline;
+    font-family: 'FuturaPTBook', sans-serif;
+    color: #231f20;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 13px;
+    text-align: center;
+    /*padding-left: 10px;*/
+}

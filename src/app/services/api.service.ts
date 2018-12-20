@@ -15,7 +15,7 @@ export class ApiService {
             token = await this.requestNewToken();
         return new Promise<any>(resolve => {
             this.http.post<any>(this.apiUrl + endpoint, JSON.stringify(body), {
-                headers: new HttpHeaders().append('LBT', 'LBTokenBearer ' + token)
+                headers: new HttpHeaders().append('LBT', 'LBTokenBearer ' + localStorage.getItem("lbt"))
             }).subscribe(
                 response => {
                     //this.handleApiResponse(response, surpressErrors);
@@ -71,6 +71,10 @@ export class ApiService {
               if (token == null || token == undefined || token == "") {
                 return null;
               }
+              console.log("getToken()");
+              console.log(token);
+              console.log("getToken() After decode");
+              console.log(decodeJwt(token));
               return decodeJwt(token);
             } else {
               return null;
@@ -94,6 +98,8 @@ export class ApiService {
     async requestNewToken() {
         let token = await this.get("token/request-token");
         localStorage.setItem("lbt", token);
+        console.log("requestNewToken()");
+        console.log(token);
         return token;
     }
 

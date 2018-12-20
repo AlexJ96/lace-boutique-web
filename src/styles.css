@@ -213,3 +213,9 @@ input:focus {
     outline: none;
     border: 1px solid #dedede;
 }
+
+
+.invalid-message{
+    color: red;
+    font-size: 10px !important;
+}

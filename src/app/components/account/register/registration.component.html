@@ -1,40 +1,83 @@
 <div class="container">
     <div class = "row mb-3 mt-3">
-        <div class="title col-5 center-block">
-            Register with Lace Boutique
+        <div class="center-block col-6">
+            <div class=" title">Register with Lace Boutique</div>
         </div>
     </div>
-    <form #f="ngForm">
+
+    <form #f="ngForm" >
         <div class="center-block col-6">
             <div class="form-group row">
                 <label for="email" class="col-4 col-form-label form-label">Email</label>
-                <div class="col-8">
-                    <input class="reg-input" type="email" value="" id="email"  name="email" #ctrl="ngModel" required [(ngModel)]="register.email" [email]="true">
-                </div>
+                <!-- <div class="col-8"> -->
+                    <input class="reg-input col-8" type="email" value="" id="email"  name="email" #email="ngModel" required [(ngModel)]="register.email" email />
+                <!-- </div> -->
             </div>
 
-            <div *ngIf="register.invalid && (email.dirty || email.touched)" class="alert alert-danger">
-                Invalid Email Address
+            <div *ngIf="email.value !== '' && email.dirty && email.invalid" class="form-group row">
+                <label class="col-4 col-form-label form-label"></label>
+                <div class="col-8 col-form-label form-label invalid-message">
+                    Please enter a valid email address.
+                </div>
             </div>
 
             <div class="form-group row">
                 <label for="confirmEmail" class="col-4 col-form-label form-label">Confirm Email</label>
-                <div class="col-8">
-                    <input class="reg-input" type="email" value="" id="confirmEmail" name="confirmEmail" [(ngModel)]="register.confirmEmail" [email]="true">
+                <!-- <div class="col-8"> -->
+                    <input class="reg-input col-8" type="email" value="" id="confirmEmail" name="confirmEmail" #confirmEmail="ngModel" [(ngModel)]="register.confirmEmail" email required/>
+                <!-- </div> -->
+            </div>
+
+            <div *ngIf="confirmEmail.value !== '' && confirmEmail.dirty && confirmEmail.value !==  email.value" class="form-group row">
+                <label class="col-4 col-form-label form-label"></label>
+                <div class="col-8 col-form-label form-label invalid-message" >
+                    A different email address has been entered.
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="password" class="col-4 col-form-label form-label">Password</label>
-                <div class="col-8">
-                    <input class="reg-input" type="password" value="" id="password" name="password" [(ngModel)]="register.password">
+                <!-- <div class="col-8"> -->
+                    <input class="reg-input col-8" type="password" value="" id="password" name="password" #password="ngModel" [(ngModel)]="register.password" pattern='((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,30})' minlength="8" maxlength="30" required>
+                <!-- </div> -->
+            </div>
+            
+            <div *ngIf="password.value !== '' && password.dirty && password.invalid" class="form-group row">
+                <label class="col-4 col-form-label form-label"></label>
+                <div class="col-8 col-form-label form-label invalid-message" *ngIf="password?.errors.pattern">
+                    Your password must contain: 
+                </div>
+                <div class="col-5"></div>
+                <div class="col-7 col-form-label form-label invalid-message" *ngIf="password?.errors.pattern">
+                    at least one lowercase letter;
+                </div>
+                <div class="col-5"></div>
+                <div class="col-7 col-form-label form-label invalid-message" *ngIf="password?.errors.pattern">
+                    at least one uppercase letter; and
+                </div>
+                <div class="col-5"></div>
+                <div class="col-7 col-form-label form-label invalid-message" *ngIf="password?.errors.pattern">
+                    at least one number.
+                </div>
+                <label class="col-4 col-form-label form-label"></label>
+                <div class="col-8 col-form-label form-label invalid-message" *ngIf="password?.errors.minlength">
+                    Your password must be 8 characters long.
+                </div>
+                <label class="col-4 col-form-label form-label"></label>
+                <div class="col-8 col-form-label form-label invalid-message" *ngIf="password?.errors.maxlength">
+                    Your password must be less than 30 characters long.
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="confirmPassword" class="col-4 col-form-label form-label">Confirm Password</label>
-                <div class="col-8">
-                    <input class="reg-input" type="password" value="" id="confirmPassword" name="confirmPassword" [(ngModel)]="register.confirmPassword">
+                <input class="reg-input col-8" type="password" value="" id="confirmPassword" name="confirmPassword" [(ngModel)]="register.confirmPassword" #confirmPassword="ngModel" required>
+            </div>
+
+            <div *ngIf="confirmPassword.value !== '' && confirmPassword.dirty && confirmPassword.value !==  password.value" class="form-group row">
+                <label class="col-4 col-form-label form-label"></label>
+                <div class="col-8 col-form-label form-label invalid-message" >
+                    A different password has been entered.
                 </div>
             </div>
 
@@ -47,6 +90,12 @@
             <div class="form-check">
                 <input style="margin-top: .55rem;" type="checkbox" class="form-check-input" id="subscription" name="subscription" [(ngModel)]="register.subscription">
                 <label class="form-check-label" for="subscription" style="font-size: 11px !important;">I am happy to subscribe to Lace Boutique offers by email.</label>
+            </div>
+
+            <div class="form-group row">
+                <div text-transforme class="col-12 col-form-label form-label invalid-message" id="serverErrorMessage">
+                    {{registerServerErrorMsg}}
+                </div>
             </div>
 
             <div class="add-item" style="text-align: center;" (click)="register(f)">

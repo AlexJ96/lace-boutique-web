@@ -1,41 +1,50 @@
 <div class="container">
     <div class="row mb-2 mt-3">
-        <div class="title col-5 center-block">
-            <p>Sign in to your account</p>
+        <div class="center-block col-6">
+            <div class="form-group row">
+                <div class="col-3 form-label"></div>
+                <div class="col-8 title">Login to your account</div>
+            </div>
         </div>
     </div>
     <form #f="ngForm">
 
         <div class="center-block col-6">
-            <div class="form-group row justify-content-center">
+            <div class="form-group row ">
                 <label for="email" class="col-3 col-form-label form-label">Email</label>
-                <div class="col-8">
-                    <input type="email" value="" id="email" name="email" #ctrl="ngModel" [(ngModel)]="login.email" required>
-                </div>
+                
+                <input class="col-8" type="email" value="" id="email" name="email" #ctrl="ngModel" [(ngModel)]="login.email" required>
             </div>
 
-            <div class="form-group row justify-content-center">
+            <div class="form-group row ">
                 <label for="password" class="col-3 col-form-label form-label">Password</label>
-                <div class="col-8">
-                    <input type="password" value="" id="password" name="password" [(ngModel)]="login.password" required>
+                
+                <input class="col-8" type="password" value="" id="password" name="password" [(ngModel)]="login.password" required>
+            </div>
+
+            <div class="form-group row ">
+                <div class="col-12 col-form-label form-label invalid-message" id="serverErrorMessage">
+                    {{registerServerErrorMsg}}
                 </div>
             </div>
 
-            <div class="row justify-content-center">
-                <div class="col-6">
-                    <div class="add-item" style="text-align: center;" (click)="login(f)">
-                        <span class="item-name">
-                            Login
-                        </span>
-                    </div>
+            <div class="row">
+                <div class="col-3 form-label"></div>
+                
+                <div class="add-item col-8" style="text-align: center;" (click)="login(f)">
+                    <span class="item-name">
+                        Login
+                    </span>
                 </div>
             </div>
 
-            <div class="row justify-content-center">
-                <a class="item-name form-label center-block" style="margin-top: 15px; cursor:pointer; text-decoration: underline;" [routerLink]="['/account/passwordReset']">Forgotten your password?</a>
+            <div class="form-group row ">
+                <div class="col-3 form-label"></div>
+                <a class="col-8 form-label form-url" [routerLink]="['/account/passwordReset']">Forgotten your password?</a>
             </div>
-            <div class="row justify-content-center">
-                <a class="item-name form-label center-block" style="margin-top: 15px; cursor:pointer; text-decoration: underline;" [routerLink]="['/account/register']">Register with us</a>
+            <div class="row ">
+                <div class="col-3 form-label"></div>
+                <a class="col-8 form-label form-url" [routerLink]="['/account/register']">Register with us</a>
             </div>
         </div>
     </form>
