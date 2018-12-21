@@ -1,0 +1,28 @@
+table{
+	width: 100%;
+	border-collapse: collapse;
+}
+tr{
+	border-bottom: 1px dotted #dedede;
+	/*background: #dedede59;*/
+}
+tr:nth-child(1){
+	border-top: 1px dotted #dedede;
+}
+.manual-item{
+	/*background: #dedede;*/
+	width: 100%; 	
+	margin: 2px;
+	font-family: 'FuturaPTBook', sans-serif;
+    color: #231f20;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 13px;
+}
+.manual-item > span {
+	margin: 10px;
+}
+.manual-item:hover{
+	background-color: #87898c;
+	color: white;
+}

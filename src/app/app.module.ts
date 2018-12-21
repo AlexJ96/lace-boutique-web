@@ -14,6 +14,7 @@ import { BagItemsComponent } from './components/account/bag-items/bag-items.comp
 import { ShopItemComponent } from './components/shop/shop-item/shop-item.component';
 import { LoginComponent } from './components/account/login/login.component';
 import { RegistrationComponent } from './components/account/register/registration.component';
+import { AccountOverviewComponent } from './components/account/account-overview/account-overview.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
@@ -26,7 +27,8 @@ const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegistrationComponent },
     { path: 'wishlist', component: LovedItemsComponents },
-    { path: 'cart', component: BagItemsComponent }
+    { path: 'cart', component: BagItemsComponent },
+    { path: 'accountoverview', component: AccountOverviewComponent },
   ]}
 
   // TODO
@@ -47,6 +49,7 @@ const routes: Routes = [
     BagItemsComponent,
     LoginComponent,
     RegistrationComponent,
+    AccountOverviewComponent,
   ],
   imports: [
     BrowserModule,
