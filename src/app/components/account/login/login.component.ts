@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { ApiService } from "../../../services/api.service";
 import * as decodeJwt from "jwt-decode";
-import { Router } from "../../../../../node_modules/@angular/router";
+import { Router } from "@angular/router";
 
 @Component({
     selector: 'login',

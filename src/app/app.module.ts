@@ -16,6 +16,7 @@ import { LoginComponent } from './components/account/login/login.component';
 import { RegistrationComponent } from './components/account/register/registration.component';
 import { AccountOverviewComponent } from './components/account/account-overview/account-overview.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ShopService } from "./services/shop.service";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -63,7 +64,7 @@ const routes: Routes = [
     ReactiveFormsModule
   ],
   exports: [RouterModule],
-  providers: [ApiService],
+  providers: [ApiService, ShopService], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }

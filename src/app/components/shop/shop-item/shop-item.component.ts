@@ -1,5 +1,6 @@
 import { OnInit, Component } from "@angular/core";
 import { Item } from "../../../models/item";
+import { ShopService } from "../../../services/shop.service";
 
 @Component({
     selector: 'shop-item',
@@ -8,9 +9,17 @@ import { Item } from "../../../models/item";
 })
 export class ShopItemComponent implements OnInit{
 
-    item = new Item();
+    item: Item;
 
-    constructor() {}
-    ngOnInit() {}
+    constructor(private shop: ShopService) {}
+    ngOnInit() {
+        this.loadItem();
+    }
+
+    async loadItem() {
+        await this.shop.loadItems();
+        this.item = this.shop.getShopItems()[0];
+        console.log(this.shop.getShopItems());
+    }
 
 }

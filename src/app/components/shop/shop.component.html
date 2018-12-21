@@ -61,17 +61,17 @@
 
     <div class="shop-content">
         <div class="row">
-            <div *ngFor="let bob of tests" class="col-4">
+            <div *ngFor="let item of this.shopService.getShopItems()" class="col-4">
                 <div class="shop-item">
                     <div class="item-image">
 
                     </div>
                     <div class="item-content">
-                        <span class="item-name">{{item.name}}
+                        <span class="item-name">{{item?.name}}
                             <i class="fa fa-heart-o" style="float: right; margin: 5px; cursor:pointer;"></i>
                         </span>
-                        <p class="item-description">{{item.description}}</p>
-                        <p class="item-price">&pound;{{item.price}}</p>
+                        <p class="item-description">{{item?.description}}</p>
+                        <p class="item-price">&pound;{{item?.price}}</p>
                     </div>
                 </div>
             </div>
