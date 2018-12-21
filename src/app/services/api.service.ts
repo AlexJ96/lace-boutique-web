@@ -11,8 +11,16 @@ export class ApiService {
 
     async post(endpoint: String, body: any = {}) {
         let token = localStorage.getItem("lbt");
-        if (token == null || token == undefined)
+        if (token == null || token == undefined) {
             token = await this.requestNewToken();
+        } else {
+            let tokenObject = this.getToken();
+            let expiry = tokenObject.exp;
+            let current = Date.now() / 1000;
+            if (expiry < current) {
+                //this.refreshToken();
+            }
+        }
         return new Promise<any>(resolve => {
             this.http.post<any>(this.apiUrl + endpoint, JSON.stringify(body), {
                 headers: new HttpHeaders().append('LBT', 'LBTokenBearer ' + localStorage.getItem("lbt"))
@@ -82,12 +90,13 @@ export class ApiService {
     }
 
     async refreshToken() {
-        let token = localStorage.getItem("lbt");
+        let token = this.getToken();
         if (token != null || token != undefined) {
-            token = await this.post("token/refresh-token", {Token: token});
+            token = await this.post("token/refresh-token", {Account: token.info.account});
         } else {
             token = await this.requestNewToken();
         }
+        this.storeToken(token);
         return token;
     }
 
