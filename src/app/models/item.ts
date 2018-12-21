@@ -1,10 +1,13 @@
 export class Item {
 
-    name: string = "Genese Ivory Lace Frill Blouse";
-    description: string = "Genese Ivory Lace Frill Blouse - Description";
-    price: any = 182.99;
-    color: any;
-    
-    constructor() {}
+    public id: String;
+    public name: String;
+    public category: String;
+    public brand: String;
+    public description: String;
+    public price: number;
+    public salePrice: number;
+
+    constructor() { }
 
 }

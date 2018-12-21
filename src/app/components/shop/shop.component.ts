@@ -1,6 +1,8 @@
 import { OnInit, Component, ElementRef, ViewChild } from "@angular/core";
 import { ActivatedRoute, Params } from "@angular/router";
 import { Item } from "../../models/item";
+import { ApiService } from "../../services/api.service";
+import { ShopService } from "../../services/shop.service";
 
 @Component({
     selector: 'shop',
@@ -21,17 +23,27 @@ export class ShopComponent implements OnInit {
     @ViewChild('itemAmtTwo') itemMenuTwo: ElementRef;
     itemAmtTwoMenuOpen: boolean = false;
 
-    tests = ["", "", "", "", "", ""];
-
-    item = new Item();
-
-    constructor(private route: ActivatedRoute) { }
+    constructor(private route: ActivatedRoute, private api: ApiService, private shopService: ShopService) { }
     ngOnInit() {
         this.route.params.subscribe((params: Params) => {
             if (params['id'] != null) {
                 console.log(params['id']);
             }
         });
+        this.loadShopItems();
+    }
+
+    async loadShopItems() {
+        await this.shopService.loadItems();
+        console.log(this.shopService.getShopItems());
+        // await this.shopService.loadItemsByBrand("Brand");
+        let filter = {
+            Brand: '',
+            Colour: '',
+            Size: '',
+            Category: 'Dresses'
+        }
+        await this.shopService.loadItemsByFilter(filter);
     }
 
     displayFilterMenu() {

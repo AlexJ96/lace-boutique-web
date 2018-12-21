@@ -39,7 +39,9 @@ export class ApiService {
 
     get(endpoint: String) {
         return new Promise<any>(resolve => {
-            this.http.get<any>(this.apiUrl + endpoint).subscribe(
+            this.http.get<any>(this.apiUrl + endpoint, {
+                headers: new HttpHeaders().append('LBT', 'LBTokenBearer ' + localStorage.getItem("lbt"))
+            }).subscribe(
                 response => {
                     resolve(response);
                 },
