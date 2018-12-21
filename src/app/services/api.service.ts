@@ -102,8 +102,21 @@ export class ApiService {
 
     async requestNewToken() {
         let token = await this.get("token/request-token");
-        localStorage.setItem("lbt", token);
+        this.storeToken(token);
         return token;
+    }
+
+    async checkTokenForRefresh() {
+        let token = this.getToken();
+        if (token == null) {
+          await this.requestNewToken();
+        } else { 
+          let expiry = token.exp;
+          let current = Date.now() / 1000;
+          if (expiry < current) {
+            await this.refreshToken();
+          }
+        }
     }
 
     storeToken(token) {
