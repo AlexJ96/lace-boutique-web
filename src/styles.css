@@ -78,6 +78,7 @@ Shop Components
     position: relative;
 }
 
+
 .shop-filter:hover, .shop-sort:hover, .view-all:hover, .item-amount:hover {
     background-color: #dedede;
 }
@@ -90,6 +91,11 @@ Shop Components
     height: 50px;
     margin-left: -1px;
     display: none;
+}
+
+.shop-filter-dropdown {
+    height: auto;
+    z-index: 999;
 }
 
 .shop-content {

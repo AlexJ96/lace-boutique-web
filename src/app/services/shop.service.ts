@@ -27,10 +27,15 @@ export class ShopService {
         let itemsFromApi = await this.api.post("shop/all-items-colour", { Colour: colour });
         console.log(itemsFromApi);
     }
+    
+    async loadFilters(filter: any) {
+        return this.api.post("shop/getFilters", filter);
+    }
 
     async loadItemsByFilter(filter: any) {
-        let itemsFromApi = await this.api.post("shop/items-by-filter", filter);
-        console.log(itemsFromApi);
+        return this.api.post("shop/getItems", filter);
+        //console.log(itemsFromApi);
+        //console.log(itemsFromApi.TOTAL_COUNT[0].keyCount);
     }
 
     getShopItems() {

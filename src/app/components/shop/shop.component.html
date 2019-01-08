@@ -1,4 +1,4 @@
-<br/>
+<br />
 <div class="container">
     <div class="page-settings">
         <div class="row">
@@ -7,10 +7,53 @@
                     <div class="col-xl-7 col-lg-7 col-md-7">
                         <div class="shop-filter" (click)="displayFilterMenu();">
                             <span class="filter-text">Filter</span>
-                            <span class="filter-text no-text-transform">(0 Products)</span>
+                            <span class="filter-text no-text-transform">{{getProductsAmount()}}</span>
                             <i class="fa shop-plus" [ngClass]="{'fa-plus' : filterMenuOpen == false, 'fa-minus' : filterMenuOpen == true}"></i>
-                            <div #shopFilter class="shop-filter-dropdown">
+                            <div #shopFilter class="shop-filter-dropdown" (click)="$event.stopPropagation()" style="cursor:default;">
+                                <div class="filter-section" *ngIf="filters?.SIZE_FILTERS.length > 0">
+                                    <div class="filter-section-title-container" (click)="displaySizesMenu();">
+                                        <h2 class="filter-section-title" style="max-width: 80%; display: inline; cursor: pointer;">Sizes</h2>
+                                        <i class="fa shop-plus" style="max-width: 5%; display: inline; cursor: pointer;"
+                                            [ngClass]="{'fa-plus' : sizesFilterOpen == false, 'fa-minus' : sizesFilterOpen == true}"></i>
 
+                                        <ul class="filter-ul" [ngStyle]="{'display' : sizesFilterOpen ==  false ? 'none' : 'block'}"
+                                            (click)="$event.stopPropagation()">
+                                            <li *ngFor="let sizeFilters of filters?.SIZE_FILTERS;" style="max-height: 30px;">
+                                                <input id="{{sizeFilters.key}}" type="checkbox" class="hidden-checkbox">
+                                                <label for="{{sizeFilters.key}}" class="real-checkbox" (click)="sizeFilters.checked = !sizeFilters.checked"
+                                                    [ngClass]="{ 'real-checkbox-checked' : sizeFilters.checked }">
+                                                    {{sizeFilters.key}}
+                                                    <span class="filter-count">({{sizeFilters.keyCount}})</span>
+                                                </label>
+                                            </li>
+                                        </ul>
+
+
+                                    </div>
+                                </div>
+                                <div class="filter-section" *ngIf="filters?.COLOUR_FILTERS.length > 0">
+                                    <div class="filter-section-title-container" (click)="displayColoursMenu();">
+                                        <h2 class="filter-section-title" style="max-width: 80%; display: inline; cursor: pointer;">Colours</h2>
+                                        <i class="fa shop-plus" style="max-width: 5%; display: inline; cursor: pointer;"
+                                            [ngClass]="{'fa-plus' : coloursFilterOpen == false, 'fa-minus' : coloursFilterOpen == true}"></i>
+                                        <ul class="filter-ul" [ngStyle]="{'display' : coloursFilterOpen ==  false ? 'none' : 'block'}"
+                                            (click)="$event.stopPropagation()">
+
+                                            <li *ngFor="let colourFilter of filters?.COLOUR_FILTERS;" style="max-height: 30px;">
+                                                <input id="{{colourFilter.key}}" type="checkbox" class="hidden-checkbox">
+                                                <label for="{{colourFilter.key}}" class="real-checkbox" (click)="colourFilter.checked = !colourFilter.checked"
+                                                    [ngClass]="{ 'real-checkbox-checked' : colourFilter.checked }">
+                                                    {{colourFilter.key}}
+                                                    <span class="filter-count">({{colourFilter.keyCount}})</span>
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="clear-apply">
+                                    <span style="float: right; padding-left: 15px;" (click)="applyFilters()">Apply</span>
+                                    <span style="float: right;">Clear All</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -39,7 +82,7 @@
                     <div class="col-2">
                         <div class="item-amount" (click)="displayItemAmountMenu();">
                             <span class="item-amount-text">
-                                25
+                                {{getCurrentShownItemsAmount()}}
                                 <i class="fa" [ngClass]="{ 'fa-chevron-down' : itemAmtMenuOpen == false, 'fa-chevron-up' : itemAmtMenuOpen == true }"></i>
                                 <div #itemAmt class="item-amount-dropdown">
 
@@ -61,17 +104,17 @@
 
     <div class="shop-content">
         <div class="row">
-            <div *ngFor="let item of this.shopService.getShopItems()" class="col-4">
+            <div *ngFor="let item of items" class="col-4">
                 <div class="shop-item">
                     <div class="item-image">
 
                     </div>
                     <div class="item-content">
-                        <span class="item-name">{{item?.name}}
+                        <span class="item-name">{{item?.item?.name}}
                             <i class="fa fa-heart-o" style="float: right; margin: 5px; cursor:pointer;"></i>
                         </span>
-                        <p class="item-description">{{item?.description}}</p>
-                        <p class="item-price">&pound;{{item?.price}}</p>
+                        <p class="item-description">{{item?.item?.description}}</p>
+                        <p class="item-price">&pound;{{item?.item?.price}}</p>
                     </div>
                 </div>
             </div>
@@ -123,7 +166,7 @@
             <div class="back-to-top" (click)="scrollToTop();">
                 <span class="back-to-top-text">
                     <i class="fa fa-chevron-up fa-lg"></i>
-                    <br/> Back To Top
+                    <br /> Back To Top
                 </span>
             </div>
         </div>

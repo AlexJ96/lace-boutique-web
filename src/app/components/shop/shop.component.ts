@@ -23,6 +23,20 @@ export class ShopComponent implements OnInit {
     @ViewChild('itemAmtTwo') itemMenuTwo: ElementRef;
     itemAmtTwoMenuOpen: boolean = false;
 
+    filters: any;
+    sizesFilterOpen: boolean = false;
+    coloursFilterOpen: boolean = false;
+    items: any;
+    shownItemsAmount = 25;
+    canLoadMoreItems = true;
+        
+    filter = {
+        Brand: '',
+        Colour: '',
+        Size: '',
+        Category: 'Dresses'
+    }
+
     constructor(private route: ActivatedRoute, private api: ApiService, private shopService: ShopService) { }
     ngOnInit() {
         this.route.params.subscribe((params: Params) => {
@@ -34,16 +48,38 @@ export class ShopComponent implements OnInit {
     }
 
     async loadShopItems() {
-        await this.shopService.loadItems();
-        console.log(this.shopService.getShopItems());
-        // await this.shopService.loadItemsByBrand("Brand");
-        let filter = {
-            Brand: '',
-            Colour: '',
-            Size: '',
-            Category: 'Dresses'
-        }
-        await this.shopService.loadItemsByFilter(filter);
+        this.filters = await this.shopService.loadFilters(this.filter);
+        console.log(this.filters);
+        this.filters.SIZE_FILTERS.forEach(element => {
+            element.checked = false;
+        });
+        this.filters.COLOUR_FILTERS.forEach(element => {
+            element.checked = false;
+        });
+
+        this.items = await this.shopService.loadItemsByFilter(this.filter);
+    }
+
+    async applyFilters() {
+        let sizeFilters = "";
+        let colourFilters = "";
+
+        this.filters.SIZE_FILTERS.forEach(element => {
+            if (element.checked) {
+                sizeFilters += element.key + ",";
+            }
+        });
+
+        this.filters.COLOUR_FILTERS.forEach(element => {
+            if (element.checked) {
+                colourFilters += element.key + ",";
+            }
+        });
+
+        this.filter.Colour = colourFilters;
+        this.filter.Size = sizeFilters;
+
+        this.items = await this.shopService.loadItemsByFilter(this.filter);
     }
 
     displayFilterMenu() {
@@ -56,6 +92,14 @@ export class ShopComponent implements OnInit {
             this.filterMenu.nativeElement.style.display = 'none';
             this.filterMenuOpen = false;
         }
+    }
+
+    displaySizesMenu() {
+        this.sizesFilterOpen = !this.sizesFilterOpen;
+    }
+
+    displayColoursMenu() {
+        this.coloursFilterOpen = !this.coloursFilterOpen;
     }
 
     displaySortMenu() {
@@ -71,6 +115,9 @@ export class ShopComponent implements OnInit {
     }
 
     displayItemAmountMenu() {
+        if (!this.canLoadMoreItems)
+            return;
+            
         let displayType = this.itemMenu.nativeElement.style.display;
 
         if (displayType == 'none' || displayType == "") {
@@ -91,6 +138,31 @@ export class ShopComponent implements OnInit {
         } else {
             this.itemMenuTwo.nativeElement.style.display = 'none';
             this.itemAmtTwoMenuOpen = false;
+        }
+    }
+
+    getProductsAmount() {
+        if (this.filters != undefined) {
+            let total = this.filters.TOTAL_COUNT[0].keyCount;
+            return "(" + total + (total > 1 ? " Products" : " Product") + ")";
+        } else {
+            return "(0 Products)";
+        }
+    }
+
+    getCurrentShownItemsAmount() {
+        if (this.filters != undefined) {
+            let total = this.filters.TOTAL_COUNT[0].keyCount;
+            if (total < this.shownItemsAmount) {
+                this.canLoadMoreItems = false;
+                return "All";
+            } else {
+                this.canLoadMoreItems = true;
+                return this.shownItemsAmount;
+            }
+        } else {
+            this.canLoadMoreItems = true;
+            return this.shownItemsAmount;
         }
     }
 

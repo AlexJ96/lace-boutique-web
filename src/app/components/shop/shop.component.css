@@ -2,6 +2,80 @@
     margin-top: 25px;
 }
 
+.filter-section {
+    width: calc(100% - 20px);
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.filter-section-title-container {
+    border-bottom: 1px solid #dedede;
+    cursor: pointer;
+}
+
+.filter-section-title, .clear-apply {
+    font-family: 'FuturaPTBook', sans-serif;
+    color: #231f20;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 13px;
+}
+
+.clear-apply {
+    width: 100%;
+    float: right;
+    padding-right: 15px;
+}
+
+.clear-apply span {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.filter-ul {
+    padding-inline-start: 0px;
+}
+
+.filter-ul li {
+    display: block;
+    padding: 0;
+}
+
+.hidden-checkbox {
+    left: -9999px;
+    position: absolute;
+    z-index: 1;
+}
+
+.real-checkbox {
+    width: 100%;
+    font-family: 'FuturaPTBook', sans-serif;
+    cursor: pointer;
+}
+
+.real-checkbox:before {
+    border: 1px solid #555;
+    content: '';
+    display: inline-block;
+    height: 10px;
+    left: 0;
+    margin-top: -6px;
+    margin-right: 10px;
+    width: 10px;
+    top: 50%;
+}
+
+.real-checkbox-checked:before {
+    background-color: #555;
+}
+
+.filter-count {
+    float: right;
+    font-family: 'FuturaPTBook', sans-serif;
+    color: #a7a5a6;
+}
+
 @media only screen and (min-width : 765px) and (max-width: 1199px) {
 }
 
