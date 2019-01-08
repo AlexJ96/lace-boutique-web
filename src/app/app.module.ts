@@ -17,6 +17,8 @@ import { RegistrationComponent } from './components/account/register/registratio
 import { AccountOverviewComponent } from './components/account/account-overview/account-overview.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShopService } from "./services/shop.service";
+import { BlockerService } from './services/blocker.service';
+import { BlockerDirective } from './directives/blocker.directive';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -51,6 +53,7 @@ const routes: Routes = [
     LoginComponent,
     RegistrationComponent,
     AccountOverviewComponent,
+    BlockerDirective
   ],
   imports: [
     BrowserModule,
@@ -64,7 +67,7 @@ const routes: Routes = [
     ReactiveFormsModule
   ],
   exports: [RouterModule],
-  providers: [ApiService, ShopService], 
+  providers: [ApiService, ShopService, BlockerService], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -52,7 +52,7 @@ export class ShopComponent implements OnInit {
     }
 
     async loadShopItems() {
-        this.filters = await this.shopService.loadFilters(this.filter);
+        this.filters = await this.shopService.loadFilters(this.filter, ["Shop"]);
         console.log(this.filters);
         this.filters.SIZE_FILTERS.forEach(element => {
             element.checked = false;
@@ -61,7 +61,7 @@ export class ShopComponent implements OnInit {
             element.checked = false;
         });
 
-        this.items = await this.shopService.loadItemsByFilter(this.filter);
+        this.items = await this.shopService.loadItemsByFilter(this.filter, ["Shop"]);
         this.refreshPageCount();
     }
 
@@ -103,7 +103,7 @@ export class ShopComponent implements OnInit {
 
         if (this.filter.Colour == "" && this.filter.Size == "")
             return;
-        this.items = await this.shopService.loadItemsByFilter(this.filter);
+        this.items = await this.shopService.loadItemsByFilter(this.filter, ["Shop"]);
         this.filters.TOTAL_COUNT[0].keyCount = this.items.length;
         this.displayFilterMenu();
         this.refreshPageCount();
@@ -124,8 +124,8 @@ export class ShopComponent implements OnInit {
                 element.checked = false;
             }
         });
-        this.items = await this.shopService.loadItemsByFilter(this.filter);
-        this.filters = await this.shopService.loadFilters(this.filter);
+        this.items = await this.shopService.loadItemsByFilter(this.filter, ["Shop"]);
+        this.filters = await this.shopService.loadFilters(this.filter, ["Shop"]);
         this.displayFilterMenu();
         this.refreshPageCount();
     }

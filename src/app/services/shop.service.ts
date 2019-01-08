@@ -28,14 +28,12 @@ export class ShopService {
         console.log(itemsFromApi);
     }
     
-    async loadFilters(filter: any) {
-        return this.api.post("shop/getFilters", filter);
+    async loadFilters(filter: any, blocker: Array<string> = []) {
+        return this.api.post("shop/getFilters", filter, blocker);
     }
 
-    async loadItemsByFilter(filter: any) {
-        return this.api.post("shop/getItems", filter);
-        //console.log(itemsFromApi);
-        //console.log(itemsFromApi.TOTAL_COUNT[0].keyCount);
+    async loadItemsByFilter(filter: any, blocker: Array<string> = []) {
+        return this.api.post("shop/getItems", filter, blocker);
     }
 
     getShopItems() {

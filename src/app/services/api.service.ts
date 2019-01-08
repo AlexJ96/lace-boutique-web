@@ -1,15 +1,17 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import * as decodeJwt from "jwt-decode";
+import { BlockerService } from "./blocker.service";
 
 @Injectable()
 export class ApiService {
 
     apiUrl = "http://localhost:8080/laceApi/";
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private blocker: BlockerService) { }
 
-    async post(endpoint: String, body: any = {}) {
+    async post(endpoint: String, body: any = {}, blocks: Array<string> = []) {
+        this.blocker.block(blocks);
         let token = localStorage.getItem("lbt");
         if (token == null || token == undefined) {
             token = await this.requestNewToken();
@@ -28,38 +30,46 @@ export class ApiService {
                 response => {
                     //this.handleApiResponse(response, surpressErrors);
                     resolve(response);
+                    this.blocker.unblock(blocks);
                 },
                 error => {
                     console.log(error);
+                    this.blocker.unblock(blocks);
                     // this.handleApiResponse(error, surpressErrors);
                 }
             );
         });
     }
 
-    get(endpoint: String) {
+    get(endpoint: String, blocks: Array<string> = []) {
+        this.blocker.block(blocks);
         return new Promise<any>(resolve => {
             this.http.get<any>(this.apiUrl + endpoint, {
                 headers: new HttpHeaders().append('LBT', 'LBTokenBearer ' + localStorage.getItem("lbt"))
             }).subscribe(
                 response => {
                     resolve(response);
+                    this.blocker.unblock(blocks);
                 },
                 error => {
                     console.log(error);
+                    this.blocker.unblock(blocks);
                 }
             );
         });
     }
 
-    delete(endpoint: String) {
+    delete(endpoint: String, blocks: Array<string> = []) {
+        this.blocker.block(blocks);
         return new Promise<any>(resolve => {
             this.http.delete(this.apiUrl + endpoint).subscribe(
                 response => {
                     resolve(response);
+                    this.blocker.unblock(blocks);
                 },
                 error => {
                     console.log(error);
+                    this.blocker.unblock(blocks);
                 }
             );
         })
