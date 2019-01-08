@@ -11,6 +11,7 @@
 .filter-section-title-container {
     border-bottom: 1px solid #dedede;
     cursor: pointer;
+    padding-bottom: 5px;
 }
 
 .filter-section-title, .clear-apply {

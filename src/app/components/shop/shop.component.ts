@@ -79,11 +79,38 @@ export class ShopComponent implements OnInit {
         this.filter.Colour = colourFilters;
         this.filter.Size = sizeFilters;
 
+        if (this.filter.Colour == "" && this.filter.Size == "")
+            return;
         this.items = await this.shopService.loadItemsByFilter(this.filter);
+        this.filters.TOTAL_COUNT[0].keyCount = this.items.length;
+        this.displayFilterMenu();
+    }
+
+    async clearFilters() {
+        this.filter.Colour = '';
+        this.filter.Size = '';
+
+        this.filters.SIZE_FILTERS.forEach(element => {
+            if (element.checked) {
+                element.checked = false;
+            }
+        });
+
+        this.filters.COLOUR_FILTERS.forEach(element => {
+            if (element.checked) {
+                element.checked = false;
+            }
+        });
+        this.items = await this.shopService.loadItemsByFilter(this.filter);
+        this.filters = await this.shopService.loadFilters(this.filter);
+        this.displayFilterMenu();
     }
 
     displayFilterMenu() {
         let displayType = this.filterMenu.nativeElement.style.display;
+
+        this.coloursFilterOpen = false;
+        this.sizesFilterOpen = false;
 
         if (displayType == 'none' || displayType == "") {
             this.filterMenu.nativeElement.style.display = 'block';
@@ -96,10 +123,12 @@ export class ShopComponent implements OnInit {
 
     displaySizesMenu() {
         this.sizesFilterOpen = !this.sizesFilterOpen;
+        this.coloursFilterOpen = false;
     }
 
     displayColoursMenu() {
         this.coloursFilterOpen = !this.coloursFilterOpen;
+        this.sizesFilterOpen = false;
     }
 
     displaySortMenu() {

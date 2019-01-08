@@ -52,7 +52,7 @@
                                 </div>
                                 <div class="clear-apply">
                                     <span style="float: right; padding-left: 15px;" (click)="applyFilters()">Apply</span>
-                                    <span style="float: right;">Clear All</span>
+                                    <span style="float: right;" (click)="clearFilters()">Clear All</span>
                                 </div>
                             </div>
                         </div>
@@ -62,7 +62,52 @@
                             <span class="sort-text">Sort By</span>
                             <i class="fa shop-plus" [ngClass]="{'fa-plus' : sortMenuOpen == false, 'fa-minus' : sortMenuOpen == true}"></i>
                             <div #shopSort class="shop-sort-dropdown">
+                                <div class="shop-filter-dropdown" (click)="$event.stopPropagation()" style="cursor:default;">
+                                    <div class="filter-section" *ngIf="filters?.SIZE_FILTERS.length > 0">
+                                        <div class="filter-section-title-container" (click)="displaySizesMenu();">
+                                            <h2 class="filter-section-title" style="max-width: 80%; display: inline; cursor: pointer;">Sizes</h2>
+                                            <i class="fa shop-plus" style="max-width: 5%; display: inline; cursor: pointer;"
+                                                [ngClass]="{'fa-plus' : sizesFilterOpen == false, 'fa-minus' : sizesFilterOpen == true}"></i>
 
+                                            <ul class="filter-ul" [ngStyle]="{'display' : sizesFilterOpen ==  false ? 'none' : 'block'}"
+                                                (click)="$event.stopPropagation()">
+                                                <li *ngFor="let sizeFilters of filters?.SIZE_FILTERS;" style="max-height: 30px;">
+                                                    <input id="{{sizeFilters.key}}" type="checkbox" class="hidden-checkbox">
+                                                    <label for="{{sizeFilters.key}}" class="real-checkbox" (click)="sizeFilters.checked = !sizeFilters.checked"
+                                                        [ngClass]="{ 'real-checkbox-checked' : sizeFilters.checked }">
+                                                        {{sizeFilters.key}}
+                                                        <span class="filter-count">({{sizeFilters.keyCount}})</span>
+                                                    </label>
+                                                </li>
+                                            </ul>
+
+
+                                        </div>
+                                    </div>
+                                    <div class="filter-section" *ngIf="filters?.COLOUR_FILTERS.length > 0">
+                                        <div class="filter-section-title-container" (click)="displayColoursMenu();">
+                                            <h2 class="filter-section-title" style="max-width: 80%; display: inline; cursor: pointer;">Colours</h2>
+                                            <i class="fa shop-plus" style="max-width: 5%; display: inline; cursor: pointer;"
+                                                [ngClass]="{'fa-plus' : coloursFilterOpen == false, 'fa-minus' : coloursFilterOpen == true}"></i>
+                                            <ul class="filter-ul" [ngStyle]="{'display' : coloursFilterOpen ==  false ? 'none' : 'block'}"
+                                                (click)="$event.stopPropagation()">
+
+                                                <li *ngFor="let colourFilter of filters?.COLOUR_FILTERS;" style="max-height: 30px;">
+                                                    <input id="{{colourFilter.key}}" type="checkbox" class="hidden-checkbox">
+                                                    <label for="{{colourFilter.key}}" class="real-checkbox" (click)="colourFilter.checked = !colourFilter.checked"
+                                                        [ngClass]="{ 'real-checkbox-checked' : colourFilter.checked }">
+                                                        {{colourFilter.key}}
+                                                        <span class="filter-count">({{colourFilter.keyCount}})</span>
+                                                    </label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="clear-apply">
+                                        <span style="float: right; padding-left: 15px;" (click)="applyFilters()">Apply</span>
+                                        <span style="float: right;" (click)="clearFilters()">Clear All</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
