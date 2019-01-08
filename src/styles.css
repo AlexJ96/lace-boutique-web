@@ -88,12 +88,8 @@ Shop Components
     width: calc(100% + 2px);
     border: 1px solid #dedede;
     background-color: white;
-    height: 50px;
     margin-left: -1px;
     display: none;
-}
-
-.shop-filter-dropdown {
     height: auto;
     z-index: 999;
 }
@@ -108,11 +104,23 @@ Shop Components
     cursor: default;
 }
 
+.page-info {
+    -webkit-user-select: none; /* Chrome/Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+    outline-style: none;
+}
+
 .page-info i {
     padding: 11.6px;
     border: 1px solid #dedede;
     cursor: pointer;
     /*opacity: 0.5;*/ /*Ready for when they are disabled - set opacity lower*/
+}
+
+.page-disabled {
+    opacity: 0.6;
+    cursor: default !important;
 }
 
 .back-arrow, .forward-arrow {
@@ -123,6 +131,10 @@ Shop Components
 
 .page-info i:hover {
     background-color: #dedede;
+}
+
+.page-disabled:hover {
+    background-color: white !important;
 }
 
 .filter-text, .sort-text, .page-info, .view-all-text, .back-to-top-text, .item-name, .item-description, .item-price, .item-amount-text, .shop-item-name, .shop-item-description p, .shop-item-price, .shop-item-colour  {

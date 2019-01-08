@@ -10,6 +10,7 @@
                             <span class="filter-text no-text-transform">{{getProductsAmount()}}</span>
                             <i class="fa shop-plus" [ngClass]="{'fa-plus' : filterMenuOpen == false, 'fa-minus' : filterMenuOpen == true}"></i>
                             <div #shopFilter class="shop-filter-dropdown" (click)="$event.stopPropagation()" style="cursor:default;">
+
                                 <div class="filter-section" *ngIf="filters?.SIZE_FILTERS.length > 0">
                                     <div class="filter-section-title-container" (click)="displaySizesMenu();">
                                         <h2 class="filter-section-title" style="max-width: 80%; display: inline; cursor: pointer;">Sizes</h2>
@@ -27,10 +28,9 @@
                                                 </label>
                                             </li>
                                         </ul>
-
-
                                     </div>
                                 </div>
+
                                 <div class="filter-section" *ngIf="filters?.COLOUR_FILTERS.length > 0">
                                     <div class="filter-section-title-container" (click)="displayColoursMenu();">
                                         <h2 class="filter-section-title" style="max-width: 80%; display: inline; cursor: pointer;">Colours</h2>
@@ -50,6 +50,7 @@
                                         </ul>
                                     </div>
                                 </div>
+
                                 <div class="clear-apply">
                                     <span style="float: right; padding-left: 15px;" (click)="applyFilters()">Apply</span>
                                     <span style="float: right;" (click)="clearFilters()">Clear All</span>
@@ -61,53 +62,22 @@
                         <div class="shop-sort" (click)="displaySortMenu();">
                             <span class="sort-text">Sort By</span>
                             <i class="fa shop-plus" [ngClass]="{'fa-plus' : sortMenuOpen == false, 'fa-minus' : sortMenuOpen == true}"></i>
-                            <div #shopSort class="shop-sort-dropdown">
-                                <div class="shop-filter-dropdown" (click)="$event.stopPropagation()" style="cursor:default;">
-                                    <div class="filter-section" *ngIf="filters?.SIZE_FILTERS.length > 0">
-                                        <div class="filter-section-title-container" (click)="displaySizesMenu();">
-                                            <h2 class="filter-section-title" style="max-width: 80%; display: inline; cursor: pointer;">Sizes</h2>
-                                            <i class="fa shop-plus" style="max-width: 5%; display: inline; cursor: pointer;"
-                                                [ngClass]="{'fa-plus' : sizesFilterOpen == false, 'fa-minus' : sizesFilterOpen == true}"></i>
+                            <div #shopSort class="shop-sort-dropdown" (click)="$event.stopPropagation()">
 
-                                            <ul class="filter-ul" [ngStyle]="{'display' : sizesFilterOpen ==  false ? 'none' : 'block'}"
-                                                (click)="$event.stopPropagation()">
-                                                <li *ngFor="let sizeFilters of filters?.SIZE_FILTERS;" style="max-height: 30px;">
-                                                    <input id="{{sizeFilters.key}}" type="checkbox" class="hidden-checkbox">
-                                                    <label for="{{sizeFilters.key}}" class="real-checkbox" (click)="sizeFilters.checked = !sizeFilters.checked"
-                                                        [ngClass]="{ 'real-checkbox-checked' : sizeFilters.checked }">
-                                                        {{sizeFilters.key}}
-                                                        <span class="filter-count">({{sizeFilters.keyCount}})</span>
-                                                    </label>
-                                                </li>
-                                            </ul>
-
-
-                                        </div>
-                                    </div>
-                                    <div class="filter-section" *ngIf="filters?.COLOUR_FILTERS.length > 0">
-                                        <div class="filter-section-title-container" (click)="displayColoursMenu();">
-                                            <h2 class="filter-section-title" style="max-width: 80%; display: inline; cursor: pointer;">Colours</h2>
-                                            <i class="fa shop-plus" style="max-width: 5%; display: inline; cursor: pointer;"
-                                                [ngClass]="{'fa-plus' : coloursFilterOpen == false, 'fa-minus' : coloursFilterOpen == true}"></i>
-                                            <ul class="filter-ul" [ngStyle]="{'display' : coloursFilterOpen ==  false ? 'none' : 'block'}"
-                                                (click)="$event.stopPropagation()">
-
-                                                <li *ngFor="let colourFilter of filters?.COLOUR_FILTERS;" style="max-height: 30px;">
-                                                    <input id="{{colourFilter.key}}" type="checkbox" class="hidden-checkbox">
-                                                    <label for="{{colourFilter.key}}" class="real-checkbox" (click)="colourFilter.checked = !colourFilter.checked"
-                                                        [ngClass]="{ 'real-checkbox-checked' : colourFilter.checked }">
-                                                        {{colourFilter.key}}
-                                                        <span class="filter-count">({{colourFilter.keyCount}})</span>
-                                                    </label>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="clear-apply">
-                                        <span style="float: right; padding-left: 15px;" (click)="applyFilters()">Apply</span>
-                                        <span style="float: right;" (click)="clearFilters()">Clear All</span>
+                                <div class="filter-section">
+                                    <div class="filter-section-title-container" style="border-bottom: 0;">
+                                        <ul class="filter-ul" (click)="$event.stopPropagation()">
+                                            <li *ngFor="let sortBy of waysToSort" style="max-height: 30px;">
+                                                <input id="{{sortBy.Id}}" type="checkbox" class="hidden-checkbox">
+                                                <label for="{{sortBy.Id}}" class="real-checkbox" (click)="orderBy(sortBy);"
+                                                    [ngClass]="{ 'real-checkbox-checked' : sortBy.checked }">
+                                                    {{sortBy.Name}}
+                                                </label>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -118,27 +88,33 @@
                     <div class="col-xl-5 col-lg-6 col-md-8" style="max-width: 90%;">
                         <div class="shop-pages">
                             <span class="page-info">
-                                <i class="fa fa-chevron-left" style="margin-right: 10px;"></i>
-                                Page 1 of 1
-                                <i class="fa fa-chevron-right" style="margin-left: 10px"></i>
+                                <i class="fa fa-chevron-left" (click)="pageDown();" style="margin-right: 10px;"
+                                    [ngClass]="{'page-disabled' : currentPage == 1}"></i>
+                                Page {{currentPage}} of {{totalPages}}
+                                <i class="fa fa-chevron-right" (click)="pageUp();" style="margin-left: 10px" [ngClass]="{'page-disabled' : !(currentPage >= 1 && currentPage < totalPages) }"></i>
                             </span>
                         </div>
                     </div>
-                    <div class="col-2">
+                    <div class="col-3">
                         <div class="item-amount" (click)="displayItemAmountMenu();">
                             <span class="item-amount-text">
                                 {{getCurrentShownItemsAmount()}}
                                 <i class="fa" [ngClass]="{ 'fa-chevron-down' : itemAmtMenuOpen == false, 'fa-chevron-up' : itemAmtMenuOpen == true }"></i>
-                                <div #itemAmt class="item-amount-dropdown">
-
+                                <div #itemAmt class="item-amount-dropdown" (click)="$event.stopPropagation()">
+                                    <div class="filter-section">
+                                        <div class="filter-section-title-container" style="border-bottom: 0;">
+                                            <ul class="filter-ul" (click)="$event.stopPropagation()">
+                                                <li *ngFor="let amount of itemsPerPage" style="max-height: 30px;">
+                                                    <input id="{{amount.Id}}" type="checkbox" class="hidden-checkbox">
+                                                    <label for="{{amount.Id}}" class="real-checkbox" (click)="selectItemsPerPage(amount);"
+                                                        [ngClass]="{ 'real-checkbox-checked' : amount.checked, 'all-less-padding' : amount.Name == 'All', 'hundred-less-padding' : amount.Name == '100'}">
+                                                        {{amount.Name}}
+                                                    </label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4">
-                        <div class="view-all">
-                            <span class="view-all-text">
-                                View All
                             </span>
                         </div>
                     </div>
@@ -174,27 +150,33 @@
                     <div class="col-xl-5 col-lg-6 col-md-8">
                         <div class="shop-pages">
                             <span class="page-info">
-                                <i class="fa fa-chevron-left" style="margin-right: 10px;"></i>
-                                Page 1 of 1
-                                <i class="fa fa-chevron-right" style="margin-left: 10px"></i>
+                                <i class="fa fa-chevron-left" (click)="pageDown();" style="margin-right: 10px;"
+                                    [ngClass]="{'page-disabled' : currentPage == 1}"></i>
+                                Page {{currentPage}} of {{totalPages}}
+                                <i class="fa fa-chevron-right" (click)="pageUp();" style="margin-left: 10px" [ngClass]="{'page-disabled' : !(currentPage >= 1 && currentPage < totalPages) }"></i>
                             </span>
                         </div>
                     </div>
-                    <div class="col-2">
+                    <div class="col-3">
                         <div class="item-amount" (click)="displayItemAmountTwoMenu();">
                             <span class="item-amount-text">
-                                25
+                                {{getCurrentShownItemsAmount()}}
                                 <i class="fa" [ngClass]="{ 'fa-chevron-down' : itemAmtTwoMenuOpen == false, 'fa-chevron-up' : itemAmtTwoMenuOpen == true }"></i>
-                                <div #itemAmtTwo class="item-amount-dropdown">
-
+                                <div #itemAmt class="item-amount-dropdown" (click)="$event.stopPropagation()">
+                                    <div class="filter-section">
+                                        <div class="filter-section-title-container" style="border-bottom: 0;">
+                                            <ul class="filter-ul" (click)="$event.stopPropagation()">
+                                                <li *ngFor="let amount of itemsPerPage" style="max-height: 30px;">
+                                                    <input id="{{amount.Id}}" type="checkbox" class="hidden-checkbox">
+                                                    <label for="{{amount.Id}}" class="real-checkbox" (click)="selectItemsPerPage(amount);"
+                                                        [ngClass]="{ 'real-checkbox-checked' : amount.checked, 'all-less-padding' : amount.Name == 'All', 'hundred-less-padding' : amount.Name == '100'}">
+                                                        {{amount.Name}}
+                                                    </label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4">
-                        <div class="view-all">
-                            <span class="view-all-text">
-                                View All
                             </span>
                         </div>
                     </div>

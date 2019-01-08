@@ -29,7 +29,11 @@ export class ShopComponent implements OnInit {
     items: any;
     shownItemsAmount = 25;
     canLoadMoreItems = true;
-        
+    waysToSort = [{ Id: 0, Name: 'Price (Highest to Lowest)', checked: false }, { Id: 1, Name: 'Price (Lowest to Highest)', checked: false }, { Id: 2, Name: 'Newest to Oldest', checked: false }, { Id: 3, Name: 'Oldest to Newest', checked: false }];
+    itemsPerPage = [{ Id: 0, Name: '25', checked: false, Amount: 25 }, { Id: 1, Name: '50', checked: false, Amount: 50 }, { Id: 2, Name: '100', checked: false, Amount: 100 }, { Id: 3, Name: 'All', checked: false, Amount: -1 }];
+    currentPage = 1;
+    totalPages = 1;
+
     filter = {
         Brand: '',
         Colour: '',
@@ -58,6 +62,24 @@ export class ShopComponent implements OnInit {
         });
 
         this.items = await this.shopService.loadItemsByFilter(this.filter);
+        this.refreshPageCount();
+    }
+
+    refreshPageCount() {
+        this.totalPages = Math.round(this.filters.TOTAL_COUNT[0].keyCount / this.shownItemsAmount);
+    }
+
+    pageDown() {
+        if (this.currentPage <= 1) {
+            return;
+        }
+        this.currentPage--;
+    }
+
+    pageUp() {
+        if (this.currentPage == this.totalPages)
+            return;
+        this.currentPage++;
     }
 
     async applyFilters() {
@@ -84,6 +106,7 @@ export class ShopComponent implements OnInit {
         this.items = await this.shopService.loadItemsByFilter(this.filter);
         this.filters.TOTAL_COUNT[0].keyCount = this.items.length;
         this.displayFilterMenu();
+        this.refreshPageCount();
     }
 
     async clearFilters() {
@@ -104,6 +127,7 @@ export class ShopComponent implements OnInit {
         this.items = await this.shopService.loadItemsByFilter(this.filter);
         this.filters = await this.shopService.loadFilters(this.filter);
         this.displayFilterMenu();
+        this.refreshPageCount();
     }
 
     displayFilterMenu() {
@@ -143,10 +167,31 @@ export class ShopComponent implements OnInit {
         }
     }
 
+    orderBy(selected) {
+        this.waysToSort.forEach(element => {
+            if (element.Name != selected.Name)
+                element.checked = false;
+        });
+        selected.checked = true;
+        //TODO API call for ordering
+    }
+
+    selectItemsPerPage(amount) {
+        this.itemsPerPage.forEach(element => {
+            if (element.Name != amount.Name)
+                element.checked = false;
+        });
+        amount.checked = true;
+        this.shownItemsAmount = amount.Amount;
+        this.itemAmtTwoMenuOpen = false;
+        this.itemAmtMenuOpen = false;
+        //TODO API call for amount / pagination
+    }
+
     displayItemAmountMenu() {
         if (!this.canLoadMoreItems)
             return;
-            
+
         let displayType = this.itemMenu.nativeElement.style.display;
 
         if (displayType == 'none' || displayType == "") {
@@ -159,6 +204,9 @@ export class ShopComponent implements OnInit {
     }
 
     displayItemAmountTwoMenu() {
+        if (!this.canLoadMoreItems)
+            return;
+
         let displayType = this.itemMenuTwo.nativeElement.style.display;
 
         if (displayType == 'none' || displayType == "") {
@@ -180,6 +228,11 @@ export class ShopComponent implements OnInit {
     }
 
     getCurrentShownItemsAmount() {
+        if (this.shownItemsAmount < 0) {
+            this.canLoadMoreItems = false;
+            return "All";
+        }
+
         if (this.filters != undefined) {
             let total = this.filters.TOTAL_COUNT[0].keyCount;
             if (total < this.shownItemsAmount) {

@@ -71,6 +71,14 @@
     background-color: #555;
 }
 
+.all-less-padding:before {
+    margin-right: 3.5px;
+}
+
+.hundred-less-padding:before {
+    margin-right: 2px;
+}
+
 .filter-count {
     float: right;
     font-family: 'FuturaPTBook', sans-serif;
