@@ -31,14 +31,16 @@ export class ShopComponent implements OnInit {
     canLoadMoreItems = true;
     waysToSort = [{ Id: 0, Name: 'Price (Highest to Lowest)', checked: false }, { Id: 1, Name: 'Price (Lowest to Highest)', checked: false }, { Id: 2, Name: 'Newest to Oldest', checked: false }, { Id: 3, Name: 'Oldest to Newest', checked: false }];
     itemsPerPage = [{ Id: 0, Name: '25', checked: false, Amount: 25 }, { Id: 1, Name: '50', checked: false, Amount: 50 }, { Id: 2, Name: '100', checked: false, Amount: 100 }, { Id: 3, Name: 'All', checked: false, Amount: -1 }];
-    currentPage = 1;
+    currentPage = 2;
     totalPages = 1;
 
     filter = {
         Brand: '',
         Colour: '',
         Size: '',
-        Category: 'Dresses'
+        Category: 'Dresses',
+        CurrentPage: this.currentPage,
+        Count: this.shownItemsAmount
     }
 
     constructor(private route: ActivatedRoute, private api: ApiService, private shopService: ShopService) { }
