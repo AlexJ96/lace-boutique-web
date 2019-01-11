@@ -27,7 +27,7 @@ export class ShopComponent implements OnInit {
     sizesFilterOpen: boolean = false;
     coloursFilterOpen: boolean = false;
     items: any;
-    shownItemsAmount = 25;
+    shownItemsAmount = 10;
     canLoadMoreItems = true;
     waysToSort = [{ Id: 0, Name: 'Price (Highest to Lowest)', checked: false }, { Id: 1, Name: 'Price (Lowest to Highest)', checked: false }, { Id: 2, Name: 'Newest to Oldest', checked: false }, { Id: 3, Name: 'Oldest to Newest', checked: false }];
     itemsPerPage = [{ Id: 0, Name: '25', checked: false, Amount: 25 }, { Id: 1, Name: '50', checked: false, Amount: 50 }, { Id: 2, Name: '100', checked: false, Amount: 100 }, { Id: 3, Name: 'All', checked: false, Amount: -1 }];
