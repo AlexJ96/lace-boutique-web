@@ -1,4 +1,6 @@
 import { OnInit, Component, ViewChild, ElementRef } from "@angular/core";
+import { ApiService } from "src/app/services/api.service";
+import { AccountService } from "src/app/services/account.service";
 
 @Component({
     selector: 'loved-items',
@@ -10,8 +12,10 @@ export class LovedItemsComponents implements OnInit {
     @ViewChild('shopSort') sortMenu: ElementRef;
     sortMenuOpen: boolean = false;
 
-    constructor() {}
-    ngOnInit() {}
+    constructor(private api: ApiService, public account: AccountService) {}
+    ngOnInit() {
+        console.log(this.account.getWishlist());
+    }
 
     displaySortMenu() {
         let displayType = this.sortMenu.nativeElement.style.display;

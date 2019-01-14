@@ -1,5 +1,6 @@
 import { OnInit, Component, HostListener, ViewChild, ElementRef } from "@angular/core";
 import { ApiService } from "../../../services/api.service";
+import { AccountService } from "src/app/services/account.service";
 
 @Component({
     selector: 'nav-bar',
@@ -17,8 +18,8 @@ export class NavBarComponent implements OnInit {
     lovedItemsShowing: boolean = false;
     bagItemsShowing: boolean = false;
 
-    constructor(private api:ApiService) { }
-    ngOnInit() { }
+    constructor(public account: AccountService) {}
+    ngOnInit() {}
 
     @HostListener("window:scroll", [])
     onWindowScroll() {

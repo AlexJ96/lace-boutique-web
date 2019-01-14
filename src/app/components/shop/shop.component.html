@@ -51,6 +51,26 @@
                                     </div>
                                 </div>
 
+                                <div class="filter-section" *ngIf="filters?.BRAND_FILTERS.length > 0">
+                                    <div class="filter-section-title-container" (click)="displayBrandsMenu();">
+                                        <h2 class="filter-section-title" style="max-width: 80%; display: inline; cursor: pointer;">Brands</h2>
+                                        <i class="fa shop-plus" style="max-width: 5%; display: inline; cursor: pointer;"
+                                            [ngClass]="{'fa-plus' : brandsFilterOpen == false, 'fa-minus' : brandsFilterOpen == true}"></i>
+                                        <ul class="filter-ul" [ngStyle]="{'display' : brandsFilterOpen ==  false ? 'none' : 'block'}"
+                                            (click)="$event.stopPropagation()">
+
+                                            <li *ngFor="let brandFilter of filters?.BRAND_FILTERS;" style="max-height: 30px;">
+                                                <input id="{{brandFilter.key}}" type="checkbox" class="hidden-checkbox">
+                                                <label for="{{brandFilter.key}}" class="real-checkbox" (click)="brandFilter.checked = !brandFilter.checked"
+                                                    [ngClass]="{ 'real-checkbox-checked' : brandFilter.checked }">
+                                                    {{brandFilter.key}}
+                                                    <span class="filter-count">({{brandFilter.keyCount}})</span>
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
                                 <div class="clear-apply">
                                     <span style="float: right; padding-left: 15px;" (click)="applyFilters()">Apply</span>
                                     <span style="float: right;" (click)="clearFilters()">Clear All</span>

@@ -12,6 +12,7 @@ import { ApiService } from "../../../services/api.service";
 export class RegistrationComponent implements OnInit {
 
     public registerServerErrorMessage : String;
+    register: any;
 
     constructor(private api: ApiService) {}
 
@@ -19,7 +20,7 @@ export class RegistrationComponent implements OnInit {
         this.registerServerErrorMessage = '';
     }
 
-    async register(f){
+    async registerUser(f){
         let data = f.value;
         let res = await this.api.post("account/register", data);
         if (res !== 'Done'){

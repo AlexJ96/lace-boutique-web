@@ -3,6 +3,7 @@ import { ActivatedRoute, Params } from "@angular/router";
 import { Item } from "../../models/item";
 import { ApiService } from "../../services/api.service";
 import { ShopService } from "../../services/shop.service";
+import { filterQueryId } from "@angular/core/src/view/util";
 
 @Component({
     selector: 'shop',
@@ -26,21 +27,23 @@ export class ShopComponent implements OnInit {
     filters: any;
     sizesFilterOpen: boolean = false;
     coloursFilterOpen: boolean = false;
+    brandsFilterOpen: boolean = false;
     items: any;
     shownItemsAmount = 25;
     canLoadMoreItems = true;
-    waysToSort = [{ Id: 0, Name: 'Price (Highest to Lowest)', checked: false }, { Id: 1, Name: 'Price (Lowest to Highest)', checked: false }, { Id: 2, Name: 'Newest to Oldest', checked: false }, { Id: 3, Name: 'Oldest to Newest', checked: false }];
+    waysToSort = [{ Id: 0, Name: 'Price (Highest to Lowest)', checked: false, type: 'Highest' }, { Id: 1, Name: 'Price (Lowest to Highest)', checked: false, type: 'Lowest' }, { Id: 2, Name: 'Newest to Oldest', checked: false, type: "newest" }, { Id: 3, Name: 'Oldest to Newest', checked: false, type: "oldest" }];
     itemsPerPage = [{ Id: 0, Name: '25', checked: false, Amount: 25 }, { Id: 1, Name: '50', checked: false, Amount: 50 }, { Id: 2, Name: '100', checked: false, Amount: 100 }, { Id: 3, Name: 'All', checked: false, Amount: -1 }];
-    currentPage = 2;
+    currentPage = 1;
     totalPages = 1;
 
     filter = {
         Brand: '',
         Colour: '',
         Size: '',
-        Category: 'Dresses',
+        Category: 'Jeans',
         CurrentPage: this.currentPage,
-        Count: this.shownItemsAmount
+        Count: this.shownItemsAmount,
+        Order: ''
     }
 
     constructor(private route: ActivatedRoute, private api: ApiService, private shopService: ShopService) { }
@@ -59,7 +62,12 @@ export class ShopComponent implements OnInit {
         this.filters.SIZE_FILTERS.forEach(element => {
             element.checked = false;
         });
+
         this.filters.COLOUR_FILTERS.forEach(element => {
+            element.checked = false;
+        });
+
+        this.filters.BRAND_FILTERS.forEach(element => {
             element.checked = false;
         });
 
@@ -67,26 +75,39 @@ export class ShopComponent implements OnInit {
         this.refreshPageCount();
     }
 
-    refreshPageCount() {
-        this.totalPages = Math.round(this.filters.TOTAL_COUNT[0].keyCount / this.shownItemsAmount);
+    async reloadShopItems(filter) {
+        this.items = await this.shopService.loadItemsByFilter(filter, ["Shop"]);
+        this.refreshPageCount();
     }
 
-    pageDown() {
+    refreshPageCount() {
+        this.totalPages = Math.ceil(this.filters.TOTAL_COUNT[0].keyCount / this.shownItemsAmount);
+        //this.totalPages = totalPages < 1 ? 1 : totalPages;
+    }
+
+    async pageDown() {
         if (this.currentPage <= 1) {
             return;
         }
         this.currentPage--;
+        this.filter.CurrentPage = this.currentPage;
+        await this.reloadShopItems(this.filter);
     }
 
-    pageUp() {
+    async pageUp() {
         if (this.currentPage == this.totalPages)
             return;
         this.currentPage++;
+        this.filter.CurrentPage = this.currentPage;
+        await this.reloadShopItems(this.filter);
     }
 
     async applyFilters() {
+        this.currentPage = 1;
+        this.totalPages = 1;
         let sizeFilters = "";
         let colourFilters = "";
+        let brandFilters = "";
 
         this.filters.SIZE_FILTERS.forEach(element => {
             if (element.checked) {
@@ -100,13 +121,23 @@ export class ShopComponent implements OnInit {
             }
         });
 
+        this.filters.BRAND_FILTERS.forEach(element => {
+            if (element.checked) {
+                brandFilters += element.key + ",";
+            }
+        });
+
         this.filter.Colour = colourFilters;
         this.filter.Size = sizeFilters;
+        this.filter.Brand = brandFilters;
 
-        if (this.filter.Colour == "" && this.filter.Size == "")
+        if (this.filter.Colour == "" && this.filter.Size == "" && this.filter.Brand == "") {
+            this.clearFilters();
             return;
+        }
+        let newFilter = await this.shopService.loadFilters(this.filter, ["Shop"]);
         this.items = await this.shopService.loadItemsByFilter(this.filter, ["Shop"]);
-        this.filters.TOTAL_COUNT[0].keyCount = this.items.length;
+        this.filters.TOTAL_COUNT[0].keyCount = newFilter.TOTAL_COUNT[0].keyCount;
         this.displayFilterMenu();
         this.refreshPageCount();
     }
@@ -150,11 +181,19 @@ export class ShopComponent implements OnInit {
     displaySizesMenu() {
         this.sizesFilterOpen = !this.sizesFilterOpen;
         this.coloursFilterOpen = false;
+        this.brandsFilterOpen = false;
     }
 
     displayColoursMenu() {
         this.coloursFilterOpen = !this.coloursFilterOpen;
         this.sizesFilterOpen = false;
+        this.brandsFilterOpen = false;
+    }
+
+    displayBrandsMenu() {
+        this.brandsFilterOpen = !this.brandsFilterOpen;
+        this.sizesFilterOpen = false;
+        this.coloursFilterOpen = false;
     }
 
     displaySortMenu() {
@@ -169,25 +208,41 @@ export class ShopComponent implements OnInit {
         }
     }
 
-    orderBy(selected) {
+    async orderBy(selected) {
         this.waysToSort.forEach(element => {
             if (element.Name != selected.Name)
                 element.checked = false;
         });
         selected.checked = true;
-        //TODO API call for ordering
+        
+        this.filter.Order = selected.type;
+        await this.reloadShopItems(this.filter);
+        this.displaySortMenu();
     }
 
-    selectItemsPerPage(amount) {
+    async selectItemsPerPage(amount) {
         this.itemsPerPage.forEach(element => {
             if (element.Name != amount.Name)
                 element.checked = false;
         });
         amount.checked = true;
         this.shownItemsAmount = amount.Amount;
-        this.itemAmtTwoMenuOpen = false;
+        this.filter.Count = amount.Amount;
+
+        this.currentPage = 1;
+        this.filter.CurrentPage = this.currentPage;
+
+        this.totalPages = 1;
+        
+        this.closeAllItemAmountMenus();
+        await this.reloadShopItems(this.filter);
+    }
+
+    closeAllItemAmountMenus() {
+        this.itemMenu.nativeElement.style.display = 'none';
         this.itemAmtMenuOpen = false;
-        //TODO API call for amount / pagination
+        this.itemMenuTwo.nativeElement.style.display = 'none';
+        this.itemAmtTwoMenuOpen = false;
     }
 
     displayItemAmountMenu() {
