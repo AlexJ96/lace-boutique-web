@@ -134,20 +134,4 @@ export class ApiService {
     storeToken(token) {
         localStorage.setItem("lbt", token);
     }
-
-    isLoggedIn(){
-        let token = this.getToken();
-        if(!token){
-            return null;
-        }
-        if(!token.info){
-            return null;
-        }
-        let account = token.info.account;
-        if(!account){
-            return null;
-        }
-        return account;
-
-    }
 }

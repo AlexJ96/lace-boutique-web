@@ -19,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShopService } from "./services/shop.service";
 import { BlockerService } from './services/blocker.service';
 import { BlockerDirective } from './directives/blocker.directive';
+import { AccountService } from './services/account.service';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -67,7 +68,7 @@ const routes: Routes = [
     ReactiveFormsModule
   ],
   exports: [RouterModule],
-  providers: [ApiService, ShopService, BlockerService], 
+  providers: [ApiService, ShopService, BlockerService, AccountService], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }

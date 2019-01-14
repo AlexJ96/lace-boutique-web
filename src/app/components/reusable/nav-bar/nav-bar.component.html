@@ -20,7 +20,7 @@
                 </div>
                 <div class="col-4">
                     <ul class="nav" id="right-nav">
-                        <li id="search" (click)="test()">
+                        <li id="search">
                             <span>Search
                                 <i class="fa fa-search" style="font-weight: 300; margin-left: 10px;"></i>
                             </span>
@@ -28,8 +28,8 @@
                         <li id="love" [routerLink]="['/account/wishlist']" (mouseenter)="mouseEnterLoved()" (mouseleave)="mouseLeaveLoved()">
                             <i class="fa fa-heart-o fa-lg"></i>
                         </li>
-                        <li id="help" *ngIf="!this.api.isLoggedIn()" [routerLink]="['/account/login']">sign in / join</li>
-                        <li id="help" *ngIf="this.api.isLoggedIn()" [routerLink]="['/account']">my account</li>
+                        <li id="help" *ngIf="!this.account.getAccount()" [routerLink]="['/account/login']">sign in / join</li>
+                        <li id="help" *ngIf="this.account.getAccount()" [routerLink]="['/account']">my account</li>
                         <li id="news-letter" [routerLink]="['/account/cart']" (mouseenter)="mouseEnterBag()" (mouseleave)="mouseLeaveBag()">bag (0)</li>
                     </ul>
                 </div>
@@ -70,9 +70,9 @@
                 <li id="love" [routerLink]="['/account/wishlist']" (click)="toggleLovedItems();" (mouseenter)="mouseEnterLoved()" (mouseleave)="mouseLeaveLoved()">
                     <i class="fa fa-heart-o fa-lg"></i>
                 </li>
-                <li id="help" *ngIf="!this.api.isLoggedIn()" [routerLink]="['/account/login']">sign in / join</li>
-                <li id="help" *ngIf="this.api.isLoggedIn()" [routerLink]="['/account']">my account</li>
-                <li id="news-letter" [routerLink]="['/account/cart']" (click)="toggleBagItems();" (mouseenter)="mouseEnterBag()" (mouseleave)="mouseLeaveBag()">bag (0)</li>
+                <li id="help" *ngIf="!this.account.getAccount()" [routerLink]="['/account/login']">sign in / join</li>
+                <li id="help" *ngIf="this.account.getAccount()" [routerLink]="['/account']">my account</li>
+                <li id="news-letter" [routerLink]="['/account/cart']" (mouseenter)="mouseEnterBag()" (mouseleave)="mouseLeaveBag()">bag (0)</li>
             </ul>
         </div>
     </div>

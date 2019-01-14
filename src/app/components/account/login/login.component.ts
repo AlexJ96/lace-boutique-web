@@ -11,6 +11,7 @@ import { Router } from "@angular/router";
 export class LoginComponent {
 
     public registerServerErrorMessage : String;
+    login: any;
 
     get registerServerErrorMsg(){
         return this.registerServerErrorMessage;
@@ -18,7 +19,7 @@ export class LoginComponent {
 
 	constructor(private api: ApiService, private router: Router) {}
 
-    async login(f){
+    async loginUser(f){
         let response = await this.api.post("account/login", f.value);
         if (response.indexOf("Token:") != -1) {
             let token = response.slice(7);
