@@ -1,11 +1,11 @@
-<div class="no-items">
-    <p>Your wishlist (0)</p>
+<div *ngIf="!this.account.getWishlist() || this.account.getWishlist().length == 0" class="no-items">
+    <p>Your wishlist is empty!</p>
     <p class="no-items-info">Items added to your wishlist will appear here. Though
         <a href="">SIGN IN</a> or
         <a href="">CREATE AN ACCOUNT</a> to save these items for next time.</p>
 </div>
 
-<div class="container">
+<div class="container" *ngIf="this.account.getWishlist() && this.account.getWishlist().length > 0">
     <div class="page-settings">
         <div class="row">
             <div class="col-6">
@@ -14,7 +14,21 @@
                         <div class="shop-sort" (click)="displaySortMenu();">
                             <span class="sort-text">Sort By</span>
                             <i class="fa shop-plus" [ngClass]="{'fa-plus' : sortMenuOpen == false, 'fa-minus' : sortMenuOpen == true}"></i>
-                            <div #shopSort class="shop-sort-dropdown">
+                            <div #shopSort class="shop-sort-dropdown" (click)="$event.stopPropagation()">
+
+                                <div class="filter-section">
+                                    <div class="filter-section-title-container" style="border-bottom: 0;">
+                                        <ul class="filter-ul" (click)="$event.stopPropagation()">
+                                            <li *ngFor="let sortBy of waysToSort" style="max-height: 30px;">
+                                                <input id="{{sortBy.Id}}" type="checkbox" class="hidden-checkbox">
+                                                <label for="{{sortBy.Id}}" class="real-checkbox" (click)="orderBy(sortBy);"
+                                                    [ngClass]="{ 'real-checkbox-checked' : sortBy.checked }">
+                                                    {{sortBy.Name}}
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
 
                             </div>
                         </div>
@@ -44,14 +58,14 @@
 
     <div class="shop-content">
         <div class="row">
-            <div *ngFor="let wishlistItem of this.account.getWishlist()" class="col-4">
+            <div *ngFor="let wishlistItem of this.account.getWishlist(); let i = index;" class="col-4">
                 <div class="shop-item">
                     <div class="item-image">
 
                     </div>
                     <div class="item-content">
                         <span class="item-name">{{wishlistItem.itemImage.item.name}}
-                            <span style="float: right; margin: 5px; cursor:pointer; text-decoration: underline;">remove</span>
+                            <span (click)="removeItem(wishlistItem, i);" style="float: right; margin: 5px; cursor:pointer; text-decoration: underline;">remove</span>
                         </span>
                         <p class="item-description">{{wishlistItem.itemImage.item.description}}</p>
                         <p class="item-price">&pound;{{wishlistItem.itemImage.item.price}}</p>

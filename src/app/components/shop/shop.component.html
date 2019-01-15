@@ -182,7 +182,7 @@
                             <span class="item-amount-text">
                                 {{getCurrentShownItemsAmount()}}
                                 <i class="fa" [ngClass]="{ 'fa-chevron-down' : itemAmtTwoMenuOpen == false, 'fa-chevron-up' : itemAmtTwoMenuOpen == true }"></i>
-                                <div #itemAmt class="item-amount-dropdown" (click)="$event.stopPropagation()">
+                                <div #itemAmtTwo class="item-amount-dropdown" (click)="$event.stopPropagation()">
                                     <div class="filter-section">
                                         <div class="filter-section-title-container" style="border-bottom: 0;">
                                             <ul class="filter-ul" (click)="$event.stopPropagation()">

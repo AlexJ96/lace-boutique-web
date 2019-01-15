@@ -12,6 +12,8 @@ export class LovedItemsComponents implements OnInit {
     @ViewChild('shopSort') sortMenu: ElementRef;
     sortMenuOpen: boolean = false;
 
+    waysToSort = [{ Id: 0, Name: 'Price (Highest to Lowest)', checked: false, type: 'Highest' }, { Id: 1, Name: 'Price (Lowest to Highest)', checked: false, type: 'Lowest' }, { Id: 2, Name: 'Newest to Oldest', checked: false, type: "newest" }, { Id: 3, Name: 'Oldest to Newest', checked: false, type: "oldest" }];
+
     constructor(private api: ApiService, public account: AccountService) {}
     ngOnInit() {
         console.log(this.account.getWishlist());
@@ -27,6 +29,19 @@ export class LovedItemsComponents implements OnInit {
             this.sortMenu.nativeElement.style.display = 'none';
             this.sortMenuOpen = false;
         }
+    }
+
+    removeItem(item, index) {
+        console.log(item);
+    }
+
+    async orderBy(selected) {
+        this.waysToSort.forEach(element => {
+            if (element.Name != selected.Name)
+                element.checked = false;
+        });
+        selected.checked = true;
+        
     }
 
     scrollToTop() {

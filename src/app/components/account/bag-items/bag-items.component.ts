@@ -1,4 +1,5 @@
 import { OnInit, Component } from "@angular/core";
+import { AccountService } from "src/app/services/account.service";
 
 @Component({
     selector: 'bag-items',
@@ -7,7 +8,9 @@ import { OnInit, Component } from "@angular/core";
 })
 export class BagItemsComponent implements OnInit {
 
-    constructor() {}
-    ngOnInit() {}
+    constructor(public account: AccountService) {}
+    ngOnInit() {
+        console.log(this.account.getCart());
+    }
     
 }

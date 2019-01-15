@@ -11,7 +11,10 @@ import { Router } from "@angular/router";
 export class LoginComponent {
 
     public registerServerErrorMessage : String;
-    login: any;
+    login = {
+        email: "",
+        password: ""
+    }
 
     get registerServerErrorMsg(){
         return this.registerServerErrorMessage;

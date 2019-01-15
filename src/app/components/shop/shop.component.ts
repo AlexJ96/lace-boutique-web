@@ -50,7 +50,7 @@ export class ShopComponent implements OnInit {
     ngOnInit() {
         this.route.params.subscribe((params: Params) => {
             if (params['id'] != null) {
-                console.log(params['id']);
+                this.filter.Category = params['id'];
             }
         });
         this.loadShopItems();

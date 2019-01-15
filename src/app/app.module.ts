@@ -32,7 +32,7 @@ const routes: Routes = [
     { path: 'register', component: RegistrationComponent },
     { path: 'wishlist', component: LovedItemsComponents },
     { path: 'cart', component: BagItemsComponent },
-    { path: 'accountoverview', component: AccountOverviewComponent },
+    { path: 'overview', component: AccountOverviewComponent },
   ]}
 
   // TODO
