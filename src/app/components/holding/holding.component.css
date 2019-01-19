@@ -1,0 +1,16 @@
+.container {
+    text-align: center;
+    margin-top: 35vh;
+}
+
+p {
+    font-family: 'FuturaPTBook', sans-serif;
+    color: #231f20;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+a {
+    text-decoration: none;
+    color: #231f20;
+}

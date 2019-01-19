@@ -2,7 +2,7 @@
     <header #navHeader class="nav-header">
         <div class="main-nav container">
             <div class="row">
-                <div class="col-5">
+                <div class="left-nav-bar">
                     <ul class="nav" id="left-nav">
                         <li id="currency">GBP
                             <i class="fa fa-angle-down"></i>
@@ -14,23 +14,29 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-3">
+                <div class="left-nav-bar-mobile">
+                    <i class="fa fa-bars fa-lg" aria-hidden="true"></i>
+                </div>
+                <div class="lace-boutique-branding">
                     <h2 style="cursor:pointer;" [routerLink]="['']">𝕷𝖆𝖈𝖊 𝕭𝖔𝖚𝖙𝖎𝖖𝖚𝖊</h2>
                     <!-- <img src="../../../../assets/lblogo.png"/> -->
                 </div>
-                <div class="col-4">
+                <div class="right-nav-bar">
                     <ul class="nav" id="right-nav">
                         <li id="search">
                             <span>Search
                                 <i class="fa fa-search" style="font-weight: 300; margin-left: 10px;"></i>
                             </span>
                         </li>
-                        <li id="love" [routerLink]="['/account/wishlist']" (mouseenter)="mouseEnterLoved()" (mouseleave)="mouseLeaveLoved()">
+                        <li id="love" [routerLink]="['/account/wishlist']" (mouseenter)="mouseEnterLoved()"
+                            (mouseleave)="mouseLeaveLoved()">
                             <i class="fa fa-heart-o fa-lg"></i>
                         </li>
-                        <li id="help" *ngIf="!this.account.getAccount()" [routerLink]="['/account/login']">sign in / join</li>
+                        <li id="help" *ngIf="!this.account.getAccount()" [routerLink]="['/account/login']">sign in /
+                            join</li>
                         <li id="help" *ngIf="this.account.getAccount()" [routerLink]="['/account']">my account</li>
-                        <li id="news-letter" [routerLink]="['/account/cart']" (mouseenter)="mouseEnterBag()" (mouseleave)="mouseLeaveBag()">bag (0)</li>
+                        <li id="news-letter" [routerLink]="['/account/cart']" (mouseenter)="mouseEnterBag()"
+                            (mouseleave)="mouseLeaveBag()">bag (0)</li>
                     </ul>
                 </div>
             </div>
@@ -67,12 +73,14 @@
                         <i class="fa fa-search" style="font-weight: 300; margin-left: 10px;"></i>
                     </span>
                 </li>
-                <li id="love" [routerLink]="['/account/wishlist']" (click)="toggleLovedItems();" (mouseenter)="mouseEnterLoved()" (mouseleave)="mouseLeaveLoved()">
+                <li id="love" [routerLink]="['/account/wishlist']" (click)="toggleLovedItems();" (mouseenter)="mouseEnterLoved()"
+                    (mouseleave)="mouseLeaveLoved()">
                     <i class="fa fa-heart-o fa-lg"></i>
                 </li>
                 <li id="help" *ngIf="!this.account.getAccount()" [routerLink]="['/account/login']">sign in / join</li>
                 <li id="help" *ngIf="this.account.getAccount()" [routerLink]="['/account']">my account</li>
-                <li id="news-letter" [routerLink]="['/account/cart']" (mouseenter)="mouseEnterBag()" (mouseleave)="mouseLeaveBag()">bag (0)</li>
+                <li id="news-letter" [routerLink]="['/account/cart']" (mouseenter)="mouseEnterBag()" (mouseleave)="mouseLeaveBag()">bag
+                    (0)</li>
             </ul>
         </div>
     </div>

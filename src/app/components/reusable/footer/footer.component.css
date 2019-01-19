@@ -39,3 +39,15 @@
     color: #231f20;
     font-weight: 500;
 }
+
+@media screen and (max-width: 756px) {
+    .col-12 {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 569px) {
+    .col-6 {
+        text-align: center;
+    }
+}

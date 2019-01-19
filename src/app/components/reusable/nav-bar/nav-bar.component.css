@@ -5,6 +5,8 @@
 .nav-header {
     min-height: 78px;
     position: relative;
+    width: 100vw;
+    max-width: 100vw;
 }
 
 .site-nav {
@@ -126,4 +128,80 @@
 
 .bag-total {
     border-top: 1px solid #dedede;
+}
+
+.left-nav-bar {
+    display: inline-block;
+    width: 33%;
+}
+.left-nav-bar-mobile {
+    display: none;
+    width: 20%;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.right-nav-bar {
+    display: inline-block;
+    width: 33%;
+}
+
+.lace-boutique-branding {
+    width: 33%;
+    text-align: center;
+}
+
+@media screen and (max-width: 1199px) {
+    .left-nav-bar {
+        display: none;
+    }
+    .left-nav-bar-mobile {
+        display: inline-block;
+    }
+
+    .left-nav-bar-mobile {
+        width: 10%;
+    }
+
+    .right-nav-bar {
+        width: 50%;
+        text-align: center;
+    }
+
+    .lace-boutique-branding {
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .site-nav {
+        display: none;
+    }
+
+    .nav-header {
+        position: fixed;
+        z-index: 9999;
+        background-color: white;
+    }
+}
+
+
+@media screen and (max-width: 750px) {
+    .right-nav-bar {
+        display: none;
+    }
+    .lace-boutique-branding {
+        width: 80%;
+    }
+    .left-nav-bar-mobile {
+        width: 20%;
+        text-align: right;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .lace-boutique-branding {
+        text-align: left;
+        padding-left: 40px;
+    }
 }

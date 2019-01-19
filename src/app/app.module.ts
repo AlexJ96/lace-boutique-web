@@ -20,8 +20,12 @@ import { ShopService } from "./services/shop.service";
 import { BlockerService } from './services/blocker.service';
 import { BlockerDirective } from './directives/blocker.directive';
 import { AccountService } from './services/account.service';
+import { HoldingComponent } from './components/holding/holding.component';
 
 const routes: Routes = [
+
+  // { path: '**', component: HoldingComponent }
+
   { path: '', component: HomeComponent },
   { path: 'shop', children: [
     { path: 'category/:id', component: ShopComponent },
@@ -54,7 +58,8 @@ const routes: Routes = [
     LoginComponent,
     RegistrationComponent,
     AccountOverviewComponent,
-    BlockerDirective
+    BlockerDirective,
+    HoldingComponent
   ],
   imports: [
     BrowserModule,

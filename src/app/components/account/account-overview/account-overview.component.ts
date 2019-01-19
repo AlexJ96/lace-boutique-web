@@ -10,6 +10,8 @@ import { ApiService } from "../../../services/api.service";
 
 export class AccountOverviewComponent implements OnInit {
 
+    name:String = "";
+
     constructor(private api: ApiService) {}
 
     ngOnInit() {}
