@@ -4,6 +4,7 @@ import { Item } from "../../models/item";
 import { ApiService } from "../../services/api.service";
 import { ShopService } from "../../services/shop.service";
 import { filterQueryId } from "@angular/core/src/view/util";
+import { AccountService } from "src/app/services/account.service";
 
 @Component({
     selector: 'shop',
@@ -46,7 +47,7 @@ export class ShopComponent implements OnInit {
         Order: ''
     }
 
-    constructor(private route: ActivatedRoute, private api: ApiService, private shopService: ShopService) { }
+    constructor(private route: ActivatedRoute, private api: ApiService, private shopService: ShopService, private account: AccountService) { }
     ngOnInit() {
         this.route.params.subscribe((params: Params) => {
             if (params['id'] != null) {
@@ -54,6 +55,19 @@ export class ShopComponent implements OnInit {
             }
         });
         this.loadShopItems();
+    }
+
+    loadItemPage(item) {
+        console.log(item);
+    }
+
+    //Need to create a local one for those who are not logged in! - No DB call just save to a list in the account Service.
+    async saveItemToWishlist(item) {
+        let itemId = item.item.id;
+        let account = this.account.getAccount();
+        let response = await this.api.post("account/addWishlistItem", { accountId: account.id, itemId: itemId });
+        let token = response.slice(7);
+        this.api.storeToken(token);
     }
 
     async loadShopItems() {

@@ -31,8 +31,12 @@ export class LovedItemsComponents implements OnInit {
         }
     }
 
-    removeItem(item, index) {
-        console.log(item);
+    async removeItem(item) {
+        let itemId = item.id;
+        let account = this.account.getAccount();
+        let response = await this.api.post("account/removeWishlistItem", { accountId: account.id, wishlistId: itemId });
+        let token = response.slice(7);
+        this.api.storeToken(token);
     }
 
     async orderBy(selected) {

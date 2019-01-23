@@ -1,14 +1,14 @@
-<div *ngIf="!this.account.getWishlist() || this.account.getWishlist().length == 0" class="no-items">
+<div *ngIf="!this.account.getWishlist()?.wishlistItems || this.account.getWishlist()?.wishlistItems.length == 0" class="no-items">
     <p>Your wishlist is empty!</p>
     <p class="no-items-info">Items added to your wishlist will appear here. Though
         <a href="">SIGN IN</a> or
         <a href="">CREATE AN ACCOUNT</a> to save these items for next time.</p>
 </div>
 
-<div class="container" *ngIf="this.account.getWishlist() && this.account.getWishlist().length > 0">
+<div class="container" *ngIf="this.account.getWishlist()?.wishlistItems && this.account.getWishlist()?.wishlistItems.length > 0">
     <div class="page-settings">
         <div class="row">
-            <div class="col-6">
+            <!--<div class="col-6">
                 <div class="row">
                     <div class="col-xl-5 col-lg-5 col-md-5">
                         <div class="shop-sort" (click)="displaySortMenu();">
@@ -34,7 +34,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
             <div class="col-6">
                 <div class="row justify-content-end">
                     <div class="col-xl-4 col-lg-4 col-md-5">
@@ -58,17 +58,17 @@
 
     <div class="shop-content">
         <div class="row">
-            <div *ngFor="let wishlistItem of this.account.getWishlist(); let i = index;" class="col-4">
+            <div *ngFor="let wishlistItem of this.account.getWishlist().wishlistItems;" class="col-4">
                 <div class="shop-item">
                     <div class="item-image">
 
                     </div>
                     <div class="item-content">
-                        <span class="item-name">{{wishlistItem.itemImage.item.name}}
-                            <span (click)="removeItem(wishlistItem, i);" style="float: right; margin: 5px; cursor:pointer; text-decoration: underline;">remove</span>
+                        <span class="item-name">{{wishlistItem.itemSpec.item.name}}
+                            <span (click)="removeItem(wishlistItem);" style="float: right; margin: 5px; cursor:pointer; text-decoration: underline;">remove</span>
                         </span>
-                        <p class="item-description">{{wishlistItem.itemImage.item.description}}</p>
-                        <p class="item-price">&pound;{{wishlistItem.itemImage.item.price}}</p>
+                        <p class="item-description">{{wishlistItem.itemSpec.item.description}}</p>
+                        <p class="item-price">&pound;{{wishlistItem.itemSpec.item.price}}</p>
                     </div>
                     <div class="add-item" style="text-align: center;">
                         <span class="item-name">

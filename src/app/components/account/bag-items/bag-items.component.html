@@ -1,31 +1,31 @@
-<div class="no-items" *ngIf="!this.account.getCart() || this.account.getCart().length == 0">
+<div class="no-items" *ngIf="!this.account.getCart().cartItems || this.account.getCart().cartItems.length == 0">
     <p>Your shopping bag is empty!</p>
     <p class="no-items-info">
         <a href="">Keep shopping</a> and find something exciting to put in it.</p>
 </div>
 
-<div class="items" *ngIf="this.account.getCart() && this.account.getCart().length > 0">
+<div class="items" *ngIf="this.account.getCart().cartItems && this.account.getCart().cartItems.length > 0">
     <div class="container">
         <div class="items-container">
             <div class="cart-item">
-                <div class="row" *ngFor="let item of this.account.getCart();">
+                <div class="row" *ngFor="let item of this.account.getCart().cartItems;">
                     <div class="col-2">
                         <div class="cart-item-image"></div>
                     </div>
                     <div class="col-3">
                         <div class="cart-item-details">
-                            <span class="item-name">{{item.itemImage.item.name}}</span>
-                            <p class="item-description">{{item.itemImage.item.description}}</p>
+                            <span class="item-name">{{item.itemSpec.item.name}}</span>
+                            <p class="item-description">{{item.itemSpec.item.description}}</p>
                             <br/>
                             <span class="item-name" style="margin-top: 15px; cursor:pointer; text-decoration: underline;">add to wishlist</span>
                             <br/>
-                            <span class="item-name" style="margin-top: 5px; cursor:pointer; text-decoration: underline;">edit</span> <span class="item-name" style="margin-top: 5px; margin-left: 10px; cursor:pointer; text-decoration: underline;">remove</span>
+                            <span class="item-name" style="margin-top: 5px; cursor:pointer; text-decoration: underline;">edit</span> <span class="item-name" style="margin-top: 5px; margin-left: 10px; cursor:pointer; text-decoration: underline;" (click)="removeItem(item);">remove</span>
                         </div>
                     </div>
                     <div class="col-1">
                         <div class="cart-item-size">
                             <span class="item-name">Size</span>
-                            <div class="item-price">{{item.size.size}}</div>
+                            <div class="item-price">{{item.itemSpec.size.size}}</div>
                         </div>
                     </div>
                     <div class="col-1">
@@ -37,13 +37,13 @@
                     <div class="col-2">
                         <div class="cart-item-colour">
                             <span class="item-name">Colour</span>
-                            <div class="item-price">{{item.itemImage.colour.colour}}</div>
+                            <div class="item-price">{{item.itemSpec.colour.colour}}</div>
                         </div>
                     </div>
                     <div class="col-3">
                         <div class="cart-item-price" style="float: right; margin-right: 20px;">
                             <span class="item-name">Price</span>
-                            <div class="item-price">&pound;{{item.itemImage.item.price}}</div>
+                            <div class="item-price">&pound;{{item.itemSpec.item.price}}</div>
                         </div>
                     </div>
                 </div>
