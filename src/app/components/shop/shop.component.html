@@ -151,9 +151,10 @@
 
                     </div>
                     <div class="item-content">
-                        <span class="item-name">{{item?.item?.name}}
-                            <i class="fa fa-heart-o" style="float: right; margin: 5px; cursor:pointer;"></i>
+                        <span class="item-name" (click)="loadItemPage(item);">{{item?.item?.name}}
                         </span>
+                        <i class="fa fa-heart-o" (click)="saveItemToWishlist(item);" style="float: right; margin: 5px; cursor:pointer;"></i>
+                        
                         <p class="item-description">{{item?.item?.description}}</p>
                         <p class="item-price">&pound;{{item?.item?.price}}</p>
                     </div>
