@@ -12,7 +12,7 @@ import { ApiService } from "../../../services/api.service";
 export class RegistrationComponent implements OnInit {
 
     public registerServerErrorMessage : String;
-    register: any;
+    register = {};
 
     constructor(private api: ApiService) {}
 
