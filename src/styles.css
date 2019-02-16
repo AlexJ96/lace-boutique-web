@@ -13,6 +13,10 @@
     outline: none;
 }
 
+.fa-15x {
+    font-size: 15em;
+}
+
 h4 {
     font-family: 'FuturaPTBook', sans-serif;
     font-size: 16px;
@@ -203,6 +207,8 @@ Shop Components
     cursor: pointer;
     border: 1px solid #dedede;
     background-color: #dedede;
+    /* background-color: #000;
+    color: #fff; */
     height: 30px;
 }
 
@@ -295,4 +301,46 @@ input:focus {
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 13px;
+}
+
+.modal-background {
+    background-color: black;
+    opacity: 0.7;
+    width: 100vw;
+    height: 100vh;
+}
+
+.account-menu {
+	margin-top: 15px;
+	-webkit-box-shadow: 0 10px 40px 0 rgba(62,57,107,.07), 0 2px 9px 0 rgba(62,57,107,.06);
+    box-shadow: 0 10px 40px 0 rgba(62,57,107,.07), 0 2px 9px 0 rgba(62,57,107,.06);
+}
+
+.card-header {
+    background-color: white;
+    border: none;
+}
+
+.card {
+    border: none;
+	margin-top: -10px;
+	-webkit-box-shadow: 0 10px 40px 0 rgba(62,57,107,.07), 0 2px 9px 0 rgba(62,57,107,.06);
+    box-shadow: 0 10px 40px 0 rgba(62,57,107,.07), 0 2px 9px 0 rgba(62,57,107,.06);
+}
+
+.card-content {
+    background-color: white;
+}
+
+.card-body {
+    padding-top: 0;
+}
+
+.font-settings {
+    font-family: 'FuturaPTBook', sans-serif;
+    color: #231f20;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    font-weight: 500;
 }

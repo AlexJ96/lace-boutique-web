@@ -1,12 +1,10 @@
-<div style="height: 133px;">
+<div class="nav-height">
     <header #navHeader class="nav-header">
         <div class="main-nav container">
             <div class="row">
                 <div class="left-nav-bar">
                     <ul class="nav" id="left-nav">
-                        <li id="currency">GBP
-                            <i class="fa fa-angle-down"></i>
-                        </li>
+                        <li id="currency">&pound; GBP</li>
                         <li id="help">Need Help?</li>
                         <li id="news-letter">
                             <i class="fa fa-envelope-o fa-lg"></i>
@@ -34,7 +32,7 @@
                         </li>
                         <li id="help" *ngIf="!this.account.getAccount()" [routerLink]="['/account/login']">sign in /
                             join</li>
-                        <li id="help" *ngIf="this.account.getAccount()" [routerLink]="['/account']">my account</li>
+                        <li id="help" *ngIf="this.account.getAccount()" [routerLink]="['/account/settings']">my account</li>
                         <li id="news-letter" [routerLink]="['/account/cart']" (mouseenter)="mouseEnterBag()"
                             (mouseleave)="mouseLeaveBag()">bag (0)</li>
                     </ul>
@@ -78,7 +76,7 @@
                     <i class="fa fa-heart-o fa-lg"></i>
                 </li>
                 <li id="help" *ngIf="!this.account.getAccount()" [routerLink]="['/account/login']">sign in / join</li>
-                <li id="help" *ngIf="this.account.getAccount()" [routerLink]="['/account']">my account</li>
+                <li id="help" *ngIf="this.account.getAccount()" [routerLink]="['/account/settings']">my account</li>
                 <li id="news-letter" [routerLink]="['/account/cart']" (mouseenter)="mouseEnterBag()" (mouseleave)="mouseLeaveBag()">bag
                     (0)</li>
             </ul>

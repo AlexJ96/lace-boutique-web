@@ -1,0 +1,80 @@
+<div class="container" style="margin-top: 25px;">
+    <mobile-return *ngIf="mobile == true"></mobile-return>
+    <div class="card" [ngStyle]="{'margin-top' : mobile ? '15px' : '-10px' }">
+        <div class="card-header">
+            <h2 class="item-name">Address Book</h2>
+            <hr>
+        </div>
+        <div class="card-content">
+            <div class="card-body">
+
+                <div class="no-address">
+                    <div class="row">
+                        <div class="col-12 font-settings" style="text-transform: initial;">
+                            <span>You have no addresses assigned to your account, add one here to speed up ordering.</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="addresses">
+                    <div class="order-content" style="margin-top: 25px;">
+                        <div class="card">
+                            <div class="card-header" style="cursor: pointer;">
+                                <div class="row">
+                                    <div class="col-xl-11 col-lg-11 col-md-10 col-sm-9 col-9 font-settings" style="text-align: initial;">
+                                        <p> 43 Queen Street </p>
+                                    </div>
+                                    <div class="col-xl-1 col-lg-1 col-md-2 col-sm-3 col-3">
+                                        <i class="fa fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="card-content">
+                                    <hr style="margin-top: 0;">
+                                    <div class="row">
+                                        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-6 col-6">
+                                            <div class="row font-settings" style="text-align: left;  text-transform: initial;">
+                                                <div class="col-12">
+                                                    <p style="margin-bottom: 0;"> Alex Johnson </p>
+                                                </div>
+                                                <div class="col-12">
+                                                    <p style="margin-bottom: 0;"> 43 Queen Street </p>
+                                                </div>
+                                                <div class="col-12">
+                                                    <p style="margin-bottom: 0;"> Balderton </p>
+                                                </div>
+                                                <div class="col-12">
+                                                    <p style="margin-bottom: 0;"> Newark </p>
+                                                </div>
+                                                <div class="col-12">
+                                                    <p style="margin-bottom: 0;"> Notts </p>
+                                                </div>
+                                                <div class="col-12">
+                                                    <p style="margin-bottom: 0;"> NG24 3NS </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <p class="font-settings" style="text-align: right; cursor:pointer;">Edit
+                                                        <i class="fa fa-pencil" aria-hidden="true"></i></p>
+                                                </div>
+                                                <div class="col-12">
+                                                    <p class="font-settings" style="text-align: right; cursor:pointer;">Delete
+                                                        <i class="fa fa-trash" aria-hidden="true"></i></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

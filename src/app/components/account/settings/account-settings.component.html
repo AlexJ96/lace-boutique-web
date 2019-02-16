@@ -1,0 +1,149 @@
+<div class="container" style="margin-top: 25px; padding-left: 0; padding-right: 0;">
+	<div class="row">
+		<div class="col-md-5 col-lg-4 col-xl-4 col-12">
+			<div class="account-menu" style="padding-top: 25px;">
+				<div class="row justify-content-md-center">
+					<div class="col-4" style="text-align: right;">
+						<i class="fa fa-user-circle-o fa-3x" aria-hidden="true" style="margin-right: 10px; margin-bottom: 22px;"></i>
+					</div>
+					<div class="col-8" style="text-align: left;">
+						<span><strong>Welcome back!</strong></span>
+						<br>
+						<small class="item-name" style="margin-left: 0px;">Customer No: <strong>{{account.id}}</strong></small>
+					</div>
+				</div>
+			</div>
+
+			<!-- Overview -->
+			<div class="account-menu">
+				<div class="account-menu-item" style="padding: 15px 0;" (click)="navigate('overview');" [ngClass]="{ 'active' : pageView == 'overview' && mobile == false }">
+					<div class="row justify-content-md-center">
+						<div class="col-4" style="text-align: center;">
+							<i class="fa fa-user-o fa-lg" aria-hidden="true"></i></div>
+						<div class="col-8" style="text-align: left;">
+							<span class="item-name">Account Overview</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Orders -->
+			<div class="account-menu">
+				<div class="account-menu-item" style="padding: 15px 0;" (click)="navigate('orders');" [ngClass]="{ 'active' : pageView == 'orders' && mobile == false }">
+					<div class="row justify-content-md-center">
+						<div class="col-4" style="text-align: center;">
+							<i class="fa fa-archive fa-lg" aria-hidden="true"></i></div>
+						<div class="col-8" style="text-align: left;">
+							<span class="item-name">My Orders</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Personal Details -->
+			<div class="account-menu">
+				<div class="account-menu-item" style="padding: 15px 0;" (click)="navigate('details');" [ngClass]="{ 'active' : pageView == 'details' && mobile == false }">
+					<div class="row justify-content-md-center">
+						<div class="col-4" style="text-align: center;">
+							<i class="fa fa-id-card-o fa-lg" aria-hidden="true"></i></div>
+						<div class="col-8" style="text-align: left;">
+							<span class="item-name">My Details</span>
+						</div>
+					</div>
+				</div>
+				<hr style="margin: 0;">
+				<div class="account-menu-item" style="padding: 15px 0;" (click)="navigate('address');" [ngClass]="{ 'active' : pageView == 'address' && mobile == false }">
+					<div class="row justify-content-md-center">
+						<div class="col-4" style="text-align: center;">
+							<i class="fa fa-address-book-o fa-lg" aria-hidden="true"></i></div>
+						<div class="col-8" style="text-align: left;">
+							<span class="item-name">Address Book</span>
+						</div>
+					</div>
+				</div>
+				<hr style="margin: 0;">
+				<div class="account-menu-item" style="padding: 15px 0;" (click)="navigate('contact');" [ngClass]="{ 'active' : pageView == 'contact' && mobile == false }">
+					<div class="row justify-content-md-center">
+						<div class="col-4" style="text-align: center;">
+							<i class="fa fa-envelope-o fa-lg" aria-hidden="true"></i></div>
+						<div class="col-8" style="text-align: left;">
+							<span class="item-name">Contact Preferences</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Help -->
+			<div class="account-menu">
+				<div class="account-menu-item" style="padding: 15px 0;" (click)="navigate('help');" [ngClass]="{ 'active' : pageView == 'help' && mobile == false }">
+					<div class="row justify-content-md-center">
+						<div class="col-4" style="text-align: center;">
+							<i class="fa fa-question-circle fa-lg" aria-hidden="true"></i></div>
+						<div class="col-8" style="text-align: left;">
+							<span class="item-name">Need Help?</span>
+						</div>
+					</div>
+				</div>
+				<hr style="margin: 0;">
+				<div class="account-menu-item" style="padding: 15px 0;" (click)="navigate('where-order');" [ngClass]="{ 'active' : pageView == 'where-order' && mobile == false }">
+					<div class="row justify-content-md-center">
+						<div class="col-4" style="text-align: center;">
+							<i class="fa fa-clock-o fa-lg" aria-hidden="true"></i></div>
+						<div class="col-8" style="text-align: left;">
+							<span class="item-name">Where's my order?</span>
+						</div>
+					</div>
+				</div>
+				<hr style="margin: 0;">
+				<div class="account-menu-item" style="padding: 15px 0;" (click)="navigate('return');" [ngClass]="{ 'active' : pageView == 'return' && mobile == false }">
+					<div class="row justify-content-md-center">
+						<div class="col-4" style="text-align: center;">
+							<i class="fa fa-truck fa-lg" aria-hidden="true"></i></div>
+						<div class="col-8" style="text-align: left;">
+							<span class="item-name">How do I make a return?</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Sign Out -->
+			<div class="account-menu" style="margin-bottom: 25px;" (click)="navigate('logout');">
+				<div class="account-menu-item" style="padding: 15px 0;">
+					<div class="row justify-content-md-center">
+						<div class="col-4" style="text-align: center;">
+							<i class="fa fa-sign-out fa-lg" aria-hidden="true"></i></div>
+						<div class="col-8" style="text-align: left;">
+							<span class="item-name">Sign Out</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-7 col-lg-8 col-xl-8 col-12">
+			<ng-container *ngIf="pageView == 'overview' && mobile == false">
+				<account-overview></account-overview>
+			</ng-container>
+			<ng-container *ngIf="pageView == 'orders' && mobile == false">
+				<account-orders></account-orders>
+			</ng-container>
+			<ng-container *ngIf="pageView == 'details' && mobile == false">
+				<account-details></account-details>
+			</ng-container>
+			<ng-container *ngIf="pageView == 'address' && mobile == false">
+				<account-address></account-address>
+			</ng-container>
+			<ng-container *ngIf="pageView == 'contact' && mobile == false">
+				<account-contact></account-contact>
+			</ng-container>
+			<ng-container *ngIf="pageView == 'help' && mobile == false">
+				<account-help></account-help>
+			</ng-container>
+			<ng-container *ngIf="pageView == 'where-order' && mobile == false">
+				<account-where-order></account-where-order>
+			</ng-container>
+			<ng-container *ngIf="pageView == 'return' && mobile == false">
+				<account-return></account-return>
+			</ng-container>
+		</div>
+	</div>
+</div>

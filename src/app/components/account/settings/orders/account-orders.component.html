@@ -1,0 +1,96 @@
+<div class="container" style="margin-top: 25px;">
+    <mobile-return *ngIf="mobile == true"></mobile-return>
+    <div class="card" [ngStyle]="{'margin-top' : mobile ? '15px' : '-10px' }">
+        <div class="card-header">
+            <h2 class="item-name">My Orders</h2>
+            <hr>
+        </div>
+        <div class="card-content">
+            <div class="card-body">
+                <!-- No Orders -->
+                <div class="no-orders">
+                    <div class="row">
+                        <div class="col-12 font-settings" style="text-transform: initial;">
+                            <span>Once you have made an order, it will appear here for you to manage.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Display all orders -->
+                <div class="orders">
+                    <div class="row">
+                        <div class="col-12 font-settings" style="text-transform: initial;">
+                            <span>Below are your recent orders, which you can manage.</span>
+                        </div>
+                    </div>
+                    <div class="order-content" style="margin-top: 25px;">
+                        <div class="card">
+                            <div class="card-header" style="cursor: pointer;">
+                                <div class="row">
+                                    <div class="col-xl-11 col-lg-11 col-md-10 col-sm-9 col-9 font-settings" style="text-align: initial;">
+                                        <p> Order #00001 </p>
+                                    </div>
+                                    <div class="col-xl-1 col-lg-1 col-md-2 col-sm-3 col-3">
+                                        <i class="fa fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 font-settings" style="text-align: initial; text-transform: initial;">
+                                        <p style="display: inline;"> Order Status:</p><p style="color: green; display: inline; text-transform: uppercase;"> delivered</p>
+                                    </div>
+                                    <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12">
+                                        <small class="item-name" style="float:right;">Manage</small>
+                                    </div>
+                                </div>
+                                <hr style="margin-top: 0;">
+                            </div>
+                            <div class="card-body">
+                                <div class="card-content">
+                                    <div class="items-container">
+                                        <div class="cart-item">
+                                            <div class="row" style="border-bottom: 1px solid #dedede; padding-bottom: 15px;">
+                                                <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 col-6">
+                                                    <div class="cart-item-image"></div>
+                                                </div>
+                                                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6">
+                                                    <div class="cart-item-details">
+                                                        <span class="item-name">name</span>
+                                                        <p class="item-description">description</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3 col-3">
+                                                    <div class="cart-item-size">
+                                                        <span class="item-name">Size</span>
+                                                        <div class="item-price">XL</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3 col-3">
+                                                    <div class="cart-item-amount">
+                                                        <span class="item-name">Qty</span>
+                                                        <div class="item-price">??</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3 col-3">
+                                                    <div class="cart-item-colour">
+                                                        <span class="item-name">Color</span>
+                                                        <div class="item-price">blue</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-1 col-lg-1 col-md-3 col-sm-3 col-3">
+                                                    <div class="cart-item-price" style="float: right;">
+                                                        <span class="item-name">Price</span>
+                                                        <div class="item-price">&pound;9.99</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+.account-menu-item {
+	cursor: pointer;
+}
+
+.account-menu-item:hover div > span {
+	text-decoration: underline;
+}
+
+.row {
+    margin-right: 0;
+	margin-left: 0;
+}
+
+.active {
+	text-decoration: underline;
+}
+

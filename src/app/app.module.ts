@@ -14,13 +14,22 @@ import { BagItemsComponent } from './components/account/bag-items/bag-items.comp
 import { ShopItemComponent } from './components/shop/shop-item/shop-item.component';
 import { LoginComponent } from './components/account/login/login.component';
 import { RegistrationComponent } from './components/account/register/registration.component';
-import { AccountOverviewComponent } from './components/account/account-overview/account-overview.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShopService } from "./services/shop.service";
 import { BlockerService } from './services/blocker.service';
 import { BlockerDirective } from './directives/blocker.directive';
 import { AccountService } from './services/account.service';
 import { HoldingComponent } from './components/holding/holding.component';
+import { AccountSettingsComponent } from './components/account/settings/account-settings.component';
+import { AccountOverviewComponent } from './components/account/settings/overview/account-overview.component';
+import { MobileReturnComponent } from './components/account/settings/mobile-return/mobile-return.component';
+import { AccountAddressComponent } from './components/account/settings/address/account-address.component';
+import { AccountContactComponent } from './components/account/settings/contact/account-contact.component';
+import { AccountDetailsComponent } from './components/account/settings/details/account-details.component';
+import { AccountHelpComponent } from './components/account/settings/help/account-help.component';
+import { AccountOrdersComponent } from './components/account/settings/orders/account-orders.component';
+import { AccountWhereOrderComponent } from './components/account/settings/where-order/account-where-order.component';
+import { AccountReturnComponent } from './components/account/settings/return/account-return.component';
 
 const routes: Routes = [
 
@@ -36,7 +45,15 @@ const routes: Routes = [
     { path: 'register', component: RegistrationComponent },
     { path: 'wishlist', component: LovedItemsComponents },
     { path: 'cart', component: BagItemsComponent },
-    { path: 'overview', component: AccountOverviewComponent },
+    { path: 'settings', component: AccountSettingsComponent },
+    { path: 'settings/overview', component: AccountOverviewComponent },
+    { path: 'settings/orders', component: AccountOrdersComponent },
+    { path: 'settings/details', component: AccountDetailsComponent },
+    { path: 'settings/address', component: AccountAddressComponent },
+    { path: 'settings/contact', component: AccountContactComponent },
+    { path: 'settings/help', component: AccountHelpComponent },
+    { path: 'settings/where-order', component: AccountWhereOrderComponent },
+    { path: 'settings/return', component: AccountReturnComponent },
   ]}
 
   // TODO
@@ -57,9 +74,18 @@ const routes: Routes = [
     BagItemsComponent,
     LoginComponent,
     RegistrationComponent,
-    AccountOverviewComponent,
+    AccountSettingsComponent,
     BlockerDirective,
-    HoldingComponent
+    HoldingComponent,
+    AccountOverviewComponent,
+    MobileReturnComponent,
+    AccountAddressComponent,
+    AccountContactComponent,
+    AccountDetailsComponent,
+    AccountHelpComponent,
+    AccountOrdersComponent,
+    AccountWhereOrderComponent,
+    AccountReturnComponent
   ],
   imports: [
     BrowserModule,
